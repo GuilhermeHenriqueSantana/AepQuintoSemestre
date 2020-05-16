@@ -12,7 +12,7 @@ public class Pontuacao {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private int quantidadeAcertos;
-	private double tempoGasto;
+	private int tempoGasto;
 	private double pontuacaoTotal;
 	private String nomeUsuario;
 	
@@ -60,10 +60,10 @@ public class Pontuacao {
 	public void setQuantidadeAcertos(int quantidadeAcertos) {
 		this.quantidadeAcertos = quantidadeAcertos;
 	}
-	public double getTempoGasto() {
+	public int getTempoGasto() {
 		return tempoGasto;
 	}
-	public void setTempoGasto(double tempoGasto) {
+	public void setTempoGasto(int tempoGasto) {
 		this.tempoGasto = tempoGasto;
 	}
 	public double getPontuacaoTotal() {

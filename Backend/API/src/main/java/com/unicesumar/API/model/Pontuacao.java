@@ -10,9 +10,19 @@ public class Pontuacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	private int quantidadeAcertos;
-	private double tempoGasto;	
+	private double tempoGasto;
+	private double pontuacaoTotal;
+	private String nomeUsuario;
+	
+	public Pontuacao() {
+		
+	}
+	
+	public Pontuacao(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
 	
 	@Override
 	public int hashCode() {
@@ -38,10 +48,10 @@ public class Pontuacao {
 		return true;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public int getQuantidadeAcertos() {
@@ -56,6 +66,19 @@ public class Pontuacao {
 	public void setTempoGasto(double tempoGasto) {
 		this.tempoGasto = tempoGasto;
 	}
+	public double getPontuacaoTotal() {
+		return pontuacaoTotal;
+	}
+	public void setPontuacaoTotal(double pontuacaoTotal) {
+		this.pontuacaoTotal = pontuacaoTotal;
+	}
+	public String getNomeUsuario() {
+		return nomeUsuario;
+	}
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
+	}
+	
 	
 	
 }

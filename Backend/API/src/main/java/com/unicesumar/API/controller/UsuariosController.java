@@ -35,10 +35,10 @@ public class UsuariosController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Usuario> cadastrar(@RequestBody UsuarioForm form){
+	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioForm form){
 		System.out.println(form);
 		Usuario usuario = form.converter();
 		usuarioRepository.save(usuario);
-		return ResponseEntity.ok(usuario);
+		return ResponseEntity.ok(new UsuarioDto(usuario));
 	}
 }

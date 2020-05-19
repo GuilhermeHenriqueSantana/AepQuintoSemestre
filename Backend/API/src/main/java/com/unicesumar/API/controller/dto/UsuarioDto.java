@@ -13,7 +13,9 @@ public class UsuarioDto {
 	public UsuarioDto(Usuario usuario) {
 		this.id = usuario.getId();
 		this.nome = usuario.getNome();
-		this.pontuacaoTotal = usuario.getPontuacao().getPontuacaoTotal();
+		if(usuario.getPontuacao() != null) {
+			this.pontuacaoTotal = usuario.getPontuacao().getPontuacaoTotal();			
+		}
 	}
 
 	public Long getId() {

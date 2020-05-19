@@ -19,11 +19,14 @@ public class Pontuacao {
 	public Pontuacao() {
 		
 	}
-	
-	public Pontuacao(String nomeUsuario) {
+		
+	public Pontuacao(int quantidadeAcertos, int tempoGasto, String nomeUsuario) {
+		this.quantidadeAcertos = quantidadeAcertos;
+		this.tempoGasto = tempoGasto;
 		this.nomeUsuario = nomeUsuario;
 	}
-	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

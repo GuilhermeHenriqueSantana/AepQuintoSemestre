@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.unicesumar.API.controller.dto.PontuacaoDto;
-import com.unicesumar.API.controller.dto.UsuarioDto;
 import com.unicesumar.API.controller.form.PontuacaoForm;
 import com.unicesumar.API.model.Pontuacao;
 import com.unicesumar.API.model.Usuario;

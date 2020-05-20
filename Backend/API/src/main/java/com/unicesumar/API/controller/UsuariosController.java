@@ -12,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.unicesumar.API.controller.dto.PontuacaoDto;
 import com.unicesumar.API.controller.dto.UsuarioDto;
 import com.unicesumar.API.controller.form.UsuarioForm;
-import com.unicesumar.API.model.Pontuacao;
 import com.unicesumar.API.model.Usuario;
 import com.unicesumar.API.repository.UsuarioRepository;
 

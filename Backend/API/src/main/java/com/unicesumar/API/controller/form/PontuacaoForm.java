@@ -2,7 +2,6 @@ package com.unicesumar.API.controller.form;
 
 import com.unicesumar.API.model.Pontuacao;
 import com.unicesumar.API.model.Usuario;
-import com.unicesumar.API.repository.UsuarioRepository;
 
 public class PontuacaoForm {
 	private int quantidadeAcertos;

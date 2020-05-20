@@ -27,9 +27,10 @@ public class PontuacaoForm {
 	public void setIdUsuario(Long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
-	public Pontuacao converter(UsuarioRepository usuarioRepository) {
-		Usuario usuario =  usuarioRepository.getOne(idUsuario);
-		return new Pontuacao(quantidadeAcertos, tempoGasto, usuario.getNome());	
+	public Pontuacao converter(Usuario usuario) {
+		Pontuacao pontuacao = new Pontuacao(quantidadeAcertos, tempoGasto, usuario.getNome());
+		pontuacao.gerarPontuacao();
+		return pontuacao;	
 	}
 	
 	

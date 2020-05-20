@@ -81,6 +81,10 @@ public class Pontuacao {
 	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
 	}
+
+	public void gerarPontuacao() {
+		this.pontuacaoTotal = (1000 * 60 * quantidadeAcertos)/(tempoGasto/100);
+	}
 	
 	
 	

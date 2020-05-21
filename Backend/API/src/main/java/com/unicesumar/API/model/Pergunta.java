@@ -19,6 +19,15 @@ public class Pergunta {
 	@ManyToMany
 	private List<Alternativa> alternativas;
 	
+	public Pergunta() {
+		
+	}		
+	
+	public Pergunta(String enunciado, List<Alternativa> alternativas) {
+		this.enunciado = enunciado;
+		this.alternativas = alternativas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

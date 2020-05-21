@@ -15,6 +15,16 @@ public class Alternativa {
 	private boolean verdadeira;
 	private String justificativa;
 	
+	public Alternativa() {
+		
+	}
+	
+	public Alternativa(String enunciado, boolean verdadeira, String justificativa) {
+		this.enunciado = enunciado;
+		this.verdadeira = verdadeira;
+		this.justificativa = justificativa;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

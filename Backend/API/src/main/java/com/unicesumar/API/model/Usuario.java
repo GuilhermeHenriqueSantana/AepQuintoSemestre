@@ -15,8 +15,18 @@ public class Usuario {
 	private String nome;
 	private String senha;
 	@OneToOne
-	private Pontuacao pontuacao;
+	private Pontuacao pontuacao = null;
 	
+	public Usuario() {
+		
+	}
+		
+	public Usuario(String nome, String senha) {
+		this.nome = nome;
+		this.senha = senha;
+	}
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

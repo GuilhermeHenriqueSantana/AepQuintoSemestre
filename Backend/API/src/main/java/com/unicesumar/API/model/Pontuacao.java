@@ -19,11 +19,14 @@ public class Pontuacao {
 	public Pontuacao() {
 		
 	}
-	
-	public Pontuacao(String nomeUsuario) {
+		
+	public Pontuacao(int quantidadeAcertos, int tempoGasto, String nomeUsuario) {
+		this.quantidadeAcertos = quantidadeAcertos;
+		this.tempoGasto = tempoGasto;
 		this.nomeUsuario = nomeUsuario;
 	}
-	
+
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -77,6 +80,10 @@ public class Pontuacao {
 	}
 	public void setNomeUsuario(String nomeUsuario) {
 		this.nomeUsuario = nomeUsuario;
+	}
+
+	public void gerarPontuacao() {
+		this.pontuacaoTotal = (1000 * 60 * quantidadeAcertos)/(tempoGasto/100);
 	}
 	
 	

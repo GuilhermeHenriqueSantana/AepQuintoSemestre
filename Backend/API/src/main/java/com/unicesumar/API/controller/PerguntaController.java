@@ -34,17 +34,14 @@ public class PerguntaController {
 		return ResponseEntity.ok(PerguntaDto.converter(perguntas));
 	}
 	
-	/*
+	
 	@PostMapping
 	public ResponseEntity<PerguntaDto> cadastrar(@RequestBody PerguntaForm form){
 		Pergunta pergunta = form.converter(alternativaRepository);
-		Pontuacao pontuacao = form.converter(usuario);	
-		usuario.setPontuacao(pontuacao);
-		pontuacaoRepository.save(pontuacao);
-		usuarioRepository.save(usuario);
-		return ResponseEntity.ok(new PontuacaoDto(pontuacao));
+		perguntaRepository.save(pergunta);
+		return ResponseEntity.ok(new PerguntaDto(pergunta));
 	}
-	*/
+	
 	
 	
 	@GetMapping("/{id}")

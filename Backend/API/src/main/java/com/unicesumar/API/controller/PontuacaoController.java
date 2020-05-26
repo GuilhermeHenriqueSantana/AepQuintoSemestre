@@ -3,8 +3,12 @@ package com.unicesumar.API.controller;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,14 +33,17 @@ public class PontuacaoController {
 	@Autowired
 	UsuarioRepository usuarioRepository;
 	
+	@CrossOrigin
 	@GetMapping
+	@Transactional
 	public ResponseEntity<List<PontuacaoDto>> lista(){
 		List<Pontuacao> pontuacoes = pontuacaoRepository.carregarOrdenado();	
 		return ResponseEntity.ok(PontuacaoDto.converter(pontuacoes));
 	}
 	
-	
+	@CrossOrigin
 	@PostMapping
+	@Transactional
 	public ResponseEntity<PontuacaoDto> cadastrar(@RequestBody PontuacaoForm form){
 		Usuario usuario =  usuarioRepository.getOne(form.getIdUsuario());
 		Pontuacao pontuacao = form.converter(usuario);	
@@ -46,7 +53,9 @@ public class PontuacaoController {
 		return ResponseEntity.ok(new PontuacaoDto(pontuacao));
 	}
 	
+	@CrossOrigin
 	@GetMapping("/{id}")
+	@Transactional
 	public ResponseEntity<PontuacaoDto> detalhar(@PathVariable Long id) {
 		Optional<Pontuacao> pontuacao = pontuacaoRepository.findById(id);
 		if(pontuacao.isPresent()) {
@@ -55,5 +64,16 @@ public class PontuacaoController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CrossOrigin
+	@DeleteMapping("/{id}")
+	@Transactional
+	public ResponseEntity<?> remover(@PathVariable Long id){
+		Optional<Pontuacao> pontuacao = pontuacaoRepository.findById(id);
+		if(pontuacao.isPresent()) {
+			pontuacaoRepository.deleteById(id);	
+			return ResponseEntity.ok().build();
+		}
+		return ResponseEntity.notFound().build();
+	}
 	
 }

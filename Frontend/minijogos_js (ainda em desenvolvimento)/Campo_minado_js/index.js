@@ -24,9 +24,26 @@ function revelarTudo() {
 }
 
 const tabuleiro = {
-  QUANT_LINHAS_COLUNAS: 7,
+  QUANT_LINHAS_COLUNAS: 10,
+  QUANT_BOMBAS: 8,
   posicoesBombas: {linha: [], coluna: []},
   valoresBlocos: [this.QUANT_LINHAS_COLUNAS],
+
+  embaralharArray(array) {
+    var indice_atual = array.length, valor_temporario, indice_aleatorio;
+ 
+    while (0 !== indice_atual) {
+ 
+        indice_aleatorio = Math.floor(Math.random() * indice_atual);
+        indice_atual -= 1;
+ 
+        valor_temporario = array[indice_atual];
+        array[indice_atual] = array[indice_aleatorio];
+        array[indice_aleatorio] = valor_temporario;
+    }
+ 
+    return array;
+  },
 
   construirTabuleiro() {
     this.definirValoresDosBlocos()
@@ -63,23 +80,40 @@ const tabuleiro = {
   },
 
   definirBombas() {
-    console.log(this.QUANT_LINHAS_COLUNAS)
-    let index = 0;
-    do {
-      const posicaoLinha = randomInt(0, this.QUANT_LINHAS_COLUNAS - 1)
-      const posicaoColuna = randomInt(0, this.QUANT_LINHAS_COLUNAS - 1)
+    let arrayBombas = []
 
-      if (!(this.posicoesBombas.linha.includes(posicaoLinha) && this.posicoesBombas.coluna.includes(posicaoColuna))) {
-        index++
-        this.posicoesBombas.linha.push(posicaoLinha)
-        this.posicoesBombas.coluna.push(posicaoColuna)
+    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS * this.QUANT_LINHAS_COLUNAS; i++) {
+      arrayBombas.push(false)
+    }
+
+    for (let i = 0; i < this.QUANT_BOMBAS; i++) {
+      arrayBombas[i] = true
+    }
+
+    arrayBombas = this.embaralharArray(arrayBombas)
+
+    console.log(arrayBombas)
+
+    let count = 0
+
+    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
+      for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
+        if (arrayBombas[count] === true) {
+          this.posicoesBombas.linha.push(i)
+          this.posicoesBombas.coluna.push(j)
+        }
+
+        count++
       }
-     
-    } while (index < this.QUANT_LINHAS_COLUNAS)
+    }
+
+    console.log(this.posicoesBombas)
+    
+    
   },
 
   possuiBombaNosIndices(linha, coluna) {
-    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
+    for (let i = 0; i < this.QUANT_BOMBAS; i++) {
       if (this.posicoesBombas.linha[i] == linha && this.posicoesBombas.coluna[i] == coluna)
         return true
     }
@@ -89,11 +123,26 @@ const tabuleiro = {
 
   definirValoresDosBlocos() {
     this.definirBombas()
-  
-    //Consertar - Remover for e definir os números com base nas bombas
+
     for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       this.valoresBlocos[i] = [this.QUANT_LINHAS_COLUNAS]
+    } 
+
+    //Define as bombas
+    let count = 0
+
+    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
+        if (this.possuiBombaNosIndices(i, j))
+          this.valoresBlocos[i][j] = "X"  
+      }
+    } 
+  
+    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {   
+      for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
+        if (this.possuiBombaNosIndices(i, j))
+          continue;
+
         let valor = 0;
         const linhaBomba = this.posicoesBombas.linha
         const colunaBomba = this.posicoesBombas.coluna
@@ -159,10 +208,6 @@ const tabuleiro = {
 
         this.valoresBlocos[i][j] = valor
       }
-    }
-  
-    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
-      this.valoresBlocos[this.posicoesBombas.linha[i]][this.posicoesBombas.coluna[i]] = "X"  
     }
   }
 

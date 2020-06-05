@@ -24,8 +24,8 @@ function revelarTudo() {
 }
 
 const tabuleiro = {
-  QUANT_LINHAS_COLUNAS: 10,
-  QUANT_BOMBAS: 8,
+  QUANT_LINHAS_COLUNAS: 7,
+  QUANT_BOMBAS: 2,
   posicoesBombas: {linha: [], coluna: []},
   valoresBlocos: [this.QUANT_LINHAS_COLUNAS],
 

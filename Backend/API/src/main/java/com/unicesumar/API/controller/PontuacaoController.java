@@ -47,9 +47,16 @@ public class PontuacaoController {
 	public ResponseEntity<PontuacaoDto> cadastrar(@RequestBody PontuacaoForm form){
 		Usuario usuario =  usuarioRepository.getOne(form.getIdUsuario());
 		Pontuacao pontuacao = form.converter(usuario);	
+		Long idRemover = null;
+		if(usuario.getPontuacao() != null) {	
+			idRemover = usuario.getPontuacao().getId();
+		}		
 		usuario.setPontuacao(pontuacao);
 		pontuacaoRepository.save(pontuacao);
 		usuarioRepository.save(usuario);
+		if(idRemover != null) {
+			this.remover(idRemover);
+		}
 		return ResponseEntity.ok(new PontuacaoDto(pontuacao));
 	}
 	

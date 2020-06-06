@@ -6,28 +6,21 @@ body {
 
 header {
    height: 70px;
+   border-bottom: 1px solid rgb(223, 223, 223);
 }
 
 main {
   min-height: calc(100vh - 70px);
-  background-color: rgb(240, 240, 240);
+  background-color: rgb(248, 248, 248);
 }
 
 #icon-user {
   display: inline-block;
-  width: 45px;
-  height: 45px;
-  border: 3px solid black;
-  color: white;
-  padding: 10px;
+  border-width: 2px;
+  padding: 7px;
   border-radius: 50%;
+  font-size: 35px;
 }
-
-#icon-user:hover {
-  background-color: black;
-  cursor: pointer;
-}
-
 .container-logar {
   padding: 10px;
   width: 350px;
@@ -40,9 +33,16 @@ input, input:focus {
   border-radius: 5px;
 }
 
+#icon-user-modal {
+  margin: auto;
+  font-size: 60px;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
 #lista-menu-principal {
   padding: 0;
-  min-width: 180px;;
+  min-width: 180px;
 }
 
 #lista-menu-principal li button {
@@ -61,8 +61,26 @@ p {
 }
 
 #container-manual {
-  width: 650px;
+  width: 900px;
   height: 530px;
   padding: 30px;
   overflow-y: scroll;
+}
+
+#container-ranque {
+  margin-top: -43px;
+  margin-left: 105px;
+  width: 700px;
+  height: 621px;
+  padding: 14px;
+  overflow-y: hidden;
+}
+
+#container-minha-posicao {
+  border-bottom: 2px solid rgb(0, 123, 255) !important;
+  padding-top: 40px;
+}
+
+#container-ranque table {
+  font-size: 13px;
 }

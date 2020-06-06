@@ -7,92 +7,208 @@
     <!--Dependências do Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!----------------------------->
-    
+
+    <!--Dependências do materialize icons-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!------------------------------------->
+
     <link rel="stylesheet" href="css/pagina-principal.css">
     <title>Game</title>
   </head>
   <body>
-    <header class="container-fluid d-flex align-items-center">
-      <div class="container d-flex align-items-center">
-        <h1 class="ml-auto mr-auto">Nome do Jogo</h1>
-
-        <div class="d-flex justify-content-center position-relative">
-          <i id="icon-user" data-toggle="modal" data-target="#exampleModalCenter"></i>
-
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
-              <div class="modal-content container-logar">
-                <div class="d-flex justify-content-end">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-
-                <div class="modal-body">
-
-                  <div>
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                      <i id="icon-logar" class="mr-2 text-center mb-3">Icon User</i>
-                      
-                      <input type="text" placeholder="apelido" class="w-100 mb-3">
-                    </div>
-
-                  </div>
-                </div>
-
-                <div class="modal-footer">
-                  <button class="btn btn-outline-warning">Desvincular</button>
-                  <button type="button" class="btn btn-outline-success">Confirmar / Alterar</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
+    <!--Tela principal-->
+    <div id="tela-principal">
+      <header class="container-fluid d-flex align-items-center">
+        <div class="container d-flex align-items-center">
+          <h1 class="ml-auto mr-auto">Nome do Jogo</h1>
+  
+          <i class="btn btn-outline-primary material-icons" id="icon-user" data-toggle="modal" data-target="#exampleModalCenter">person</i>
         </div>
 
-      </div>
-    </header>
-
-    <main class="container-fluid d-flex align-items-center">
-      <div class="container d-flex justify-content-between align-items-center">
-        <section>
-          <ul id="lista-menu-principal" class="list-unstyled">
-            <li><button id="btn-jogar" class="btn btn-outline-primary mb-5">Jogar</button></li>
-            <li><button id="btn-ranque" class="btn btn-outline-primary mb-5">Ranque</button></li>
-            <li><button id="btn-manual" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-manual">Manual</button></li>
-          </ul>  
-        </section>
-        <section class="card card-introducao">
-          <h3 class="text-center mb-4">Introdução</h3>
-          <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
-          <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo </p>
-        </section>
-      </div>
-
-      <div class="modal fade" id="modal-manual" tabindex="-1" role="dialog" aria-labelledby="modal-manual" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content" id="container-manual">
-            <div class="d-flex align-items-center mb-4">
-              <h3 class="m-auto">Manual</h3>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div>      
-                <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
-        
-                <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
-        
-                <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+        <!--Modal Inserir, Alterar e Desvincular apelido-->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document">
+            <div class="modal-content container-logar">
+              <div class="d-flex justify-content-end">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+  
+              <div class="modal-body">
+                <div class="d-flex flex-column align-items-center">
+                    <i class="material-icons text-primary" id="icon-user-modal" data-toggle="modal" data-target="#exampleModalCenter">person</i>
+                
+                    <input type="text" placeholder="apelido" class="w-100 mb-3">
+  
+                </div>
+              </div>
+  
+              <div class="modal-footer d-flex justify-content-around">
+                <button class="btn btn-outline-danger" data-dismiss="modal">Desvincular</button>
+                <button type="button" class="btn btn-outline-success" data-dismiss="modal">
+                  Confirmar / Alterar
+                </button>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </main>
+        <!-- Fim do Modal Inserir, Alterar e Desvincular apelido-->
+        
+      </header>
+  
+      <main class="container-fluid d-flex align-items-center">     
+        <div class="container d-flex justify-content-between align-items-center">
+          <!--Menu de opções-->
+          <section>
+            <ul id="lista-menu-principal" class="list-unstyled">
+              <li><button id="btn-jogar" class="btn btn-outline-primary mb-5">Jogar</button></li>
+              <li><button id="btn-ranque" class="btn btn-outline-primary mb-5" data-toggle="modal" data-target="#modal-ranque" onclick="tabela.construir()">Ranque</button></li>
+              <li><button id="btn-manual" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-manual">Manual</button></li>
+            </ul>  
+          </section>
+          <!--Fim do Menu de opções-->
 
-    <script src="js/script.js"></script>
+          <!--Card de introdução-->
+          <section class="card card-introducao">
+            <h3 class="text-center mb-4">Introdução</h3>
+            <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+            <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo </p>
+          </section>
+          <!--Fim do Card de introdução-->
+        </div>
+        
+        <!--Modal Ranque-->
+        <div class="modal fade" id="modal-ranque" tabindex="-1" role="dialog" aria-labelledby="modal-ranque" aria-hidden="true">
+          <div class="modal-dialog" style="margin-left: 250px; margin-top: 45px;" role="document">
+            <div class="modal-content" id="container-ranque">
+              <div class="d-flex align-items-center mb-4">
+                <h4 class="m-auto">Ranque</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div id="tabela-ranque">      
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Posição</th>
+                        <th scope="col">Jogador</th>
+                        <th scope="col">N° Acertos</th>
+                        <th scope="col">Tempo gasto</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>15</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>12</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr class="">
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>11</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">4</th>
+                        <td>Larry</td>
+                        <td>10</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">5</th>
+                        <td>Larry</td>
+                        <td>9</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">6</th>
+                        <td>Larry</td>
+                        <td>8</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">7</th>
+                        <td>Larry</td>
+                        <td>7</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">8</th>
+                        <td>Larry</td>
+                        <td>6</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">9</th>
+                        <td>Larry</td>
+                        <td>5</td>
+                        <td>12:00s</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">10</th>
+                        <td>Larry</td>
+                        <td>4</td>
+                        <td>12:00s</td>
+                      </tr>
+
+                      <tr class="text-primary" id="container-minha-posicao">
+                        <th scope="row">12</th>
+                        <td>Larry</td>
+                        <td>4</td>
+                        <td>12:00s</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                        
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fim do Modal Ranque-->
+
+        <!--Modal Manual-->
+        <div class="modal fade" id="modal-manual" tabindex="-1" role="dialog" aria-labelledby="modal-manual" aria-hidden="true">
+          <div class="modal-dialog" style="margin-left: 250px; margin-top: 45px;" role="document">
+            <div class="modal-content" id="container-manual">
+              <div class="d-flex align-items-center mb-4">
+                <h3 class="m-auto">Manual</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div>      
+                  <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+          
+                  <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+          
+                  <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+  
+                  <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+  
+                  <p class="text-justify">Eros curae tempor diam class vitae mi eros, sapien nibh varius quisque fermentum dictum, enim tempor senectus nisi nulla non. purus vivamus curabitur aliquet dapibus amet ligula urna himenaeos lorem class vel tellus, dolor dapibus leo pharetra rutrum feugiat commodo neque aliquet praesent mollis, integer hac integer sagittis venenatis eros blandit vestibulum id mattis orci. conubia lorem conubia curae lectus semper etiam habitasse cursus </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Fim do Modal Manual-->
+
+      </main>
+    </div>
+    <!--Fim da Tela principal-->
+
 
     <!--Dependências do Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

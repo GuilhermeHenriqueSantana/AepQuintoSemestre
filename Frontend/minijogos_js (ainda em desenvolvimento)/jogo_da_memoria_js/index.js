@@ -59,7 +59,7 @@ function revelar(element) {
     }
 
     if (!acertos.includes(linha, coluna)) {
-      const mili = 500
+      const mili = 180
       setTimeout(() => {
         esconder(elementosExpostosNoVez[0].linha, elementosExpostosNoVez[0].coluna)
         esconder(elementosExpostosNoVez[1].linha, elementosExpostosNoVez[1].coluna)

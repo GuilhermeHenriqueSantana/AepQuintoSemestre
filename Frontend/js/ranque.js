@@ -1,4 +1,17 @@
-const meuApelido = 'Pedro'
+function obterMeuRanque() {
+  //Lógica para obter o meu ranque
+
+  return (
+    {
+      posicao: 14,
+      apelido: 'Pedro',
+      acertos: 5,
+      tempoGasto: 20000 //Milisegundos 
+    }
+  )
+}
+
+const meuRanque = obterMeuRanque()
 
 const dadosTabela = [
   {
@@ -8,7 +21,7 @@ const dadosTabela = [
     tempoGasto: 20000 //Milisegundos
   },
   {
-    posicao: 1,
+    posicao: 14,
     apelido: 'Pedro',
     acertos: 5,
     tempoGasto: 20000 //Milisegundos
@@ -88,21 +101,36 @@ const tabela = {
     const tBody = document.createElement('tbody')
     tabela.appendChild(tBody)
 
+    let estaNoTop10 = false
     dadosTabela.forEach(element => {
       const tr = document.createElement('tr')
 
-      if (element.apelido === meuApelido)
+      if (element.apelido === meuRanque.apelido) {
         tr.classList.add('text-primary')
+        estaNoTop10 = true
+      }
 
       tr.innerHTML = `
-
           <td>${element.posicao}</td>
           <td>${element.apelido}</td>
           <td>${element.acertos}</td>
           <td>${element.tempoGasto}</td>
       `
       tBody.appendChild(tr)
-
     })
+
+    if (!estaNoTop10) {
+      const tr = document.createElement('tr')
+      tr.classList.add('text-primary')
+      tr.classList.add('container-minha-posicao')
+
+      tr.innerHTML = `
+          <td>${meuRanque.posicao}</td>
+          <td>${meuRanque.apelido}</td>
+          <td>${meuRanque.acertos}</td>
+          <td>${meuRanque.tempoGasto}</td>
+      `
+      tBody.appendChild(tr)
+    }
   }
 }

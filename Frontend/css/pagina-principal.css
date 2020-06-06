@@ -76,7 +76,7 @@ p {
   overflow-y: hidden;
 }
 
-#container-minha-posicao {
+.container-minha-posicao {
   border-bottom: 2px solid rgb(0, 123, 255) !important;
   padding-top: 40px;
 }

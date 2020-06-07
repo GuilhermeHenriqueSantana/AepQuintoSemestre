@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <title>Game</title>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--Dependências do Bootstrap-->
+    <!--Dependência do Bootstrap-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <!----------------------------->
 
-    <!--Dependências do materialize icons-->
+    <!--Dependência do materialize icons-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!------------------------------------->
 
+    <!--CSS da página-->
+    <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/pagina-principal.css">
-    <title>Game</title>
+    <link rel="stylesheet" href="css/tela-perguntas.css">
+    <!----------------->
   </head>
   <body>
     <!--Tela principal-->
     <div id="tela-principal">
-      <header class="container-fluid d-flex align-items-center">
+      <header id="header-tela-principal" class="container-fluid d-flex align-items-center">
         <div class="container d-flex align-items-center">
           <h1 class="ml-auto mr-auto">Nome do Jogo</h1>
   
@@ -57,7 +60,7 @@
         
       </header>
   
-      <main class="container-fluid d-flex align-items-center">     
+      <main id="main-tela-perguntas" class="container-fluid d-flex align-items-center">     
         <div class="container d-flex justify-content-between align-items-center">
           <!--Menu de opções-->
           <section>
@@ -131,7 +134,85 @@
     </div>
     <!--Fim da Tela principal-->
 
+    <!--Tela de perguntas-->
+    <div id="tela-perguntas" class="d-none">
+      <header id="header-tela-perguntas" class="d-flex justify-content-center">
+        <div class="container d-flex justify-content-between align-items-center">
+          <i class="material-icons text-primary" id="icone-return">arrow_back</i>
+
+          <h4>Questão: <span>2</span> de <span>10</span></h4>
+          <h4>Tempo restante: <span>05:53s</span></h4>
+
+          <button class="btn btn-outline-primary d-flex align-items-center justify-content-between">
+            <span>  
+              Dicas
+            </span>
+            
+            <div class="d-flex ml-1" id="icone-lampada">
+              <span class="quantidade-de-dicas align-self-end">3</span>
+              <i class="material-icons">lightbulb_outline</i>
+            </div>
+          </button>
+        </div>
+      </header>
+
+      <main>
+        <div class="container mt-3">
+          <section class="enunciado mb-4">
+            <p>Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?</p>
+          </section>
+
+          <section id="container-alternativas">
+            <div class="alternativa">
+              <div class="div-checkbox">
+                <label class="label-checkbox">
+                  <input type="radio" checked="checked" name="alternatina">
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            </div>
+
+            <div class="alternativa">
+              <label class="label-checkbox">
+                <input type="radio" checked="checked" name="alternatina">
+                <span class="checkmark"></span>
+              </label>
+              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            </div>
+
+            <div class="alternativa">
+              <label class="label-checkbox">
+                <input type="radio" checked="checked" name="alternatina">
+                <span class="checkmark"></span>
+              </label>
+              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            </div>
+
+            <div class="alternativa">
+              <label class="label-checkbox">
+                <input type="radio" checked="checked" name="alternatina">
+                <span class="checkmark"></span>
+              </label>
+              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            </div>
+          </section>
+
+          <footer class="d-flex justify-content-end mt-3">
+            <button class="btn btn-outline-success">
+              Próxima
+            </button>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <!--Fim da Tela de perguntas-->
+
+    <!--JS da página-->
     <script src="js/ranque.js"></script>
+    <script src="js/jogar.js"></script>
+    <!---------------->
+    
     <!--Dependências do Bootstrap-->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

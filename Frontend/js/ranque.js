@@ -3,8 +3,8 @@ function obterMeuRanque() {
 
   return (
     {
-      posicao: 14,
-      apelido: 'Pedro',
+      posicao: 1,
+      apelido: 'Thiago',
       acertos: 5,
       tempoGasto: 20000 //Milisegundos 
     }
@@ -78,7 +78,6 @@ const dadosTabela = [
 
 const tabela = {
   CONTAINER_TABELA: document.querySelector('#tabela-ranque'),
-  count: 0,
   construir() {
     this.CONTAINER_TABELA.innerHTML = ''
     

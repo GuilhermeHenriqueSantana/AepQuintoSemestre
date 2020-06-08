@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <title>Game</title>
     <meta charset="UTF-8">
@@ -15,6 +15,7 @@
     <!--CSS da página-->
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/pagina-principal.css">
+    <link rel="stylesheet" href="css/custom-radios.css">
     <link rel="stylesheet" href="css/tela-perguntas.css">
     <!----------------->
   </head>
@@ -141,9 +142,9 @@
           <i class="material-icons text-primary" id="icone-return">arrow_back</i>
 
           <h4>Questão: <span id="numero-questao-atual">2</span> de <span id="numero-quantidade-questoes">10</span></h4>
-          <h4>Tempo restante: <span id="tempo-restante">05:53s</span></h4>
+          <h4>Tempo gasto: <span id="tempo-gasto">0s</span></h4>
 
-          <button class="btn btn-outline-primary d-flex align-items-center justify-content-between">
+          <button data-toggle="modal" data-target="#modal-dicas" id="btn-dicas" class="btn btn-outline-primary d-flex align-items-center justify-content-between">
             <span>  
               Dicas
             </span>
@@ -155,6 +156,35 @@
           </button>
         </div>
       </header>
+
+      <!--Modal dicas-->
+      <div class="modal fade" id="modal-dicas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content" id="modal-dicas">
+            <div class="modal-header">
+              <h5 class="modal-title ml-auto">Escolha um minijogo</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body d-flex justify-content-around align-items-center">
+              <div class="imagem-minijogo">
+                <h5>Minijogo 1</h5>
+                <i class="material-icons text-primary">image</i>
+              </div>
+              <div class="imagem-minijogo">
+                <h5>Minijogo 1</h5>
+                <i class="material-icons text-success">image</i>
+              </div>
+              <div class="imagem-minijogo">
+                <h5>Minijogo 1</h5>
+                <i class="material-icons text-warning">image</i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Fim do Modal dicas-->
 
       <main>
         <div id="container-pergunta" class="container mt-3">
@@ -247,6 +277,7 @@
     <!--JS da página-->
     <script src="js/ranque.js"></script>
     <script src="js/jogar.js"></script>
+    <script src="js/selecionarMinijogo.js"></script>
     <!---------------->
     
     <!--Dependências do Bootstrap-->

@@ -12,6 +12,7 @@ document.querySelector('#icone-return').onclick = function() {
   document.querySelector('#tela-principal').classList.remove('d-none')
 }
 
+//Dados dos enunciados, alternativas, justificativas e quais são corretas
 const perguntas = [
   {
     enunciado: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?',
@@ -68,26 +69,62 @@ const perguntas = [
 ]
 
 const jogo = {
+  quantidadeDeDicas: 3,
   perguntaAtual: 0,
+  tempoGastoMS: 0,
+  estaPausado: false,
+  acertos: 0,
   foiCorrigida: false,
   CONTAINER_PERGUNTA: document.querySelector('#container-pergunta'),
 
   iniciar() {
+    this.quantidadeDeDicas = 3
     this.perguntaAtual = 0
+    this.tempoGastoMS = 0
+    this.estaPausado = false
+    this.acertos = 0
+    this.foiCorrigida = false
+
     this.construir()
   },
 
   construir() {
     this.CONTAINER_PERGUNTA.innerHTML = ''
-    this.atualizarNumeroDaQuestao()
+    this.atualizarHeader()
     this.construirEnunciado()
     this.construirAlternativas()
     this.construirBotaoDeProxima()
   },
 
-  atualizarNumeroDaQuestao() {
+  atualizarQuantidadeDeDicas(quantidade) {
+    if (quantidade >= 0) {
+      this.quantidadeDeDicas = quantidade
+      document.querySelector('.quantidade-de-dicas').innerText = quantidade
+    }
+  },
+
+  atualizarHeader() {
+    this.atualizarQuantidadeDeDicas(this.quantidadeDeDicas)
     document.querySelector('#numero-questao-atual').innerHTML = this.perguntaAtual + 1
     document.querySelector('#numero-quantidade-questoes').innerHTML = perguntas.length
+
+    //Atualizar contador
+    setInterval(() => {
+      if (!this.estaPausado) {
+        this.tempoGastoMS += 1000
+        const elemento = document.querySelector('#tempo-gasto')
+  
+        elemento.innerText = `${this.tempoGastoMS / 1000}s`
+      }
+    }, 1000)
+  },
+
+  pausarTemporizador() {
+    this.estaPausado = true
+  },
+
+  despausarTemporizador() {
+    this.estaPausado = false
   },
 
   construirEnunciado() {
@@ -192,6 +229,8 @@ const jogo = {
     //Definir cor dar bordas das alternativas (vermelho ou verde)
     radios.forEach((element, index) => {
       if (perguntas[this.perguntaAtual].alternativa[index].correta) {
+        if (element.checked && !this.foiCorrigida)
+          this.acertos++
         radios[index].parentNode.parentNode.parentNode.parentNode.classList.add('alternativa-correta')
       }
       else {
@@ -220,6 +259,6 @@ const jogo = {
   },
 
   finalizar() {
-    document.write('JOGO FINALIZADO')
+    document.write(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
   }
 }

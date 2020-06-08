@@ -140,8 +140,8 @@
         <div class="container d-flex justify-content-between align-items-center">
           <i class="material-icons text-primary" id="icone-return">arrow_back</i>
 
-          <h4>Questão: <span>2</span> de <span>10</span></h4>
-          <h4>Tempo restante: <span>05:53s</span></h4>
+          <h4>Questão: <span id="numero-questao-atual">2</span> de <span id="numero-quantidade-questoes">10</span></h4>
+          <h4>Tempo restante: <span id="tempo-restante">05:53s</span></h4>
 
           <button class="btn btn-outline-primary d-flex align-items-center justify-content-between">
             <span>  
@@ -157,49 +157,85 @@
       </header>
 
       <main>
-        <div class="container mt-3">
-          <section class="enunciado mb-4">
+        <div id="container-pergunta" class="container mt-3">
+          <section id="enunciado">
             <p>Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?</p>
           </section>
 
           <section id="container-alternativas">
-            <div class="alternativa">
-              <div class="div-checkbox">
-                <label class="label-checkbox">
-                  <input type="radio" checked="checked" name="alternatina">
-                  <span class="checkmark"></span>
-                </label>
+            <div class="container-alternativa">
+              <div class="texto-alternativa">
+                <div class="div-checkbox">
+                  <label class="label-checkbox">
+                    <input type="radio" checked="checked" name="alternatina">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
               </div>
-              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+              
+              <div class="align-self-end text-primary">
+                <i class="material-icons icone-justificativa">remove_red_eye</i>
+              </div>
+
+              <div class="container-justificativa d-none">
+                <h4>Justificativa</h4>
+
+                <p>Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+              </div>
             </div>
 
-            <div class="alternativa">
-              <label class="label-checkbox">
-                <input type="radio" checked="checked" name="alternatina">
-                <span class="checkmark"></span>
-              </label>
-              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            <div class="container-alternativa">
+              <div class="texto-alternativa">
+                <div class="div-checkbox">
+                  <label class="label-checkbox">
+                    <input type="radio" name="alternatina">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+              </div>
+              
+              <div class="align-self-end text-primary">
+                <i class="material-icons icone-justificativa">remove_red_eye</i>
+              </div>
             </div>
 
-            <div class="alternativa">
-              <label class="label-checkbox">
-                <input type="radio" checked="checked" name="alternatina">
-                <span class="checkmark"></span>
-              </label>
-              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            <div class="container-alternativa">
+              <div class="texto-alternativa">
+                <div class="div-checkbox">
+                  <label class="label-checkbox">
+                    <input type="radio" name="alternatina">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+              </div>
+              
+              <div class="align-self-end text-primary">
+                <i class="material-icons icone-justificativa">remove_red_eye</i>
+              </div>
             </div>
 
-            <div class="alternativa">
-              <label class="label-checkbox">
-                <input type="radio" checked="checked" name="alternatina">
-                <span class="checkmark"></span>
-              </label>
-              <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+            <div class="container-alternativa">
+              <div class="texto-alternativa">
+                <div class="div-checkbox">
+                  <label class="label-checkbox">
+                    <input type="radio" name="alternatina">
+                    <span class="checkmark"></span>
+                  </label>
+                </div>
+                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
+              </div>
+              
+              <div class="align-self-end text-primary">
+                <i class="material-icons icone-justificativa">remove_red_eye</i>
+              </div>
             </div>
           </section>
 
           <footer class="d-flex justify-content-end mt-3">
-            <button class="btn btn-outline-success">
+            <button class="btn btn-outline-success" onclick="corrigir()">
               Próxima
             </button>
           </footer>

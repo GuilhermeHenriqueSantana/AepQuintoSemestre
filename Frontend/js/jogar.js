@@ -69,6 +69,7 @@ const perguntas = [
 ]
 
 const jogo = {
+  contadorDoTempoFoiIniciado: false,
   quantidadeDeDicas: undefined,
   perguntaAtual: undefined,
   tempoGastoMS: undefined,
@@ -107,16 +108,19 @@ const jogo = {
     this.atualizarQuantidadeDeDicas(this.quantidadeDeDicas)
     document.querySelector('#numero-questao-atual').innerHTML = this.perguntaAtual + 1
     document.querySelector('#numero-quantidade-questoes').innerHTML = perguntas.length
-
-    //Atualizar contador
-    setInterval(() => {
-      if (!this.estaPausado) {
-        this.tempoGastoMS += 1000
-        const elemento = document.querySelector('#tempo-gasto')
-  
-        elemento.innerText = `${this.tempoGastoMS / 1000}s`
-      }
-    }, 1000)
+    
+    if (!this.contadorDoTempoFoiIniciado) {
+      this.contadorDoTempoFoiIniciado = true
+      //Atualizar contador
+      setInterval(() => {
+        if (!this.estaPausado) {
+          this.tempoGastoMS += 1000
+          const elemento = document.querySelector('#tempo-gasto')
+    
+          elemento.innerText = `${this.tempoGastoMS / 1000}s`
+        }
+      }, 1000)
+    }
   },
 
   pausarTemporizador() {

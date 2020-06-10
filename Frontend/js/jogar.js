@@ -69,16 +69,16 @@ const perguntas = [
 ]
 
 const jogo = {
-  quantidadeDeDicas: 3,
-  perguntaAtual: 0,
-  tempoGastoMS: 0,
-  estaPausado: false,
-  acertos: 0,
-  foiCorrigida: false,
+  quantidadeDeDicas: undefined,
+  perguntaAtual: undefined,
+  tempoGastoMS: undefined,
+  estaPausado: undefined,
+  acertos: undefined,
+  foiCorrigida: undefined,
   CONTAINER_PERGUNTA: document.querySelector('#container-pergunta'),
 
   iniciar() {
-    this.quantidadeDeDicas = 3
+    this.quantidadeDeDicas = 2
     this.perguntaAtual = 0
     this.tempoGastoMS = 0
     this.estaPausado = false

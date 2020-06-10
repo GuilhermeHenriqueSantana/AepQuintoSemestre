@@ -1,0 +1,67 @@
+#game {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.tabuleiro {
+  border: 2px solid rgb(71, 89, 255);
+  border-radius: 5px;
+}
+
+.linha {
+  display: flex;
+}
+
+.bloco {
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+  background-color: rgb(71, 89, 255);
+}
+
+.bloco:hover {
+  cursor: pointer;
+  background-color: rgba(71, 89, 255, 0.719);
+}
+
+.conteudo {
+  font-size: 25px;
+  color: transparent;
+  font-weight: bold;
+}
+
+.btn-revelar {
+  padding: 10px;
+  border: 2px solid tomato;
+  background-color: transparent;
+  color: tomato;
+  font-weight: bolder;
+  transition: 350ms;
+}
+
+.btn-revelar:hover {
+  cursor: pointer;
+  transition: 350ms;
+  color: white;
+  background-color: tomato;
+}
+
+.container-resultado {
+  background-color: white;
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  border: 2px solid;
+  padding: 100px;
+}

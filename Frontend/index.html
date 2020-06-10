@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/pagina-principal.css">
     <link rel="stylesheet" href="css/custom-radios.css">
     <link rel="stylesheet" href="css/tela-perguntas.css">
+    <link rel="stylesheet" href="css/campoMinado.css">
     <!----------------->
   </head>
   <body>
@@ -168,17 +169,13 @@
               </button>
             </div>
             <div class="modal-body d-flex justify-content-around align-items-center">
-              <div class="imagem-minijogo">
-                <h5>Minijogo 1</h5>
-                <i class="material-icons text-primary">image</i>
+              <div class="imagem-minijogo" id="container-campo-minado" data-dismiss="modal" aria-label="Close">
+                  <h5>Campo minado</h5>
+                  <i class="material-icons text-primary">image</i>
               </div>
-              <div class="imagem-minijogo">
-                <h5>Minijogo 1</h5>
-                <i class="material-icons text-success">image</i>
-              </div>
-              <div class="imagem-minijogo">
-                <h5>Minijogo 1</h5>
-                <i class="material-icons text-warning">image</i>
+              <div class="imagem-minijogo" id="container-memoria" data-dismiss="modal" aria-label="Close">
+                  <h5>Memória</h5>
+                  <i class="material-icons text-success">image</i>  
               </div>
             </div>
           </div>
@@ -274,10 +271,14 @@
     </div>
     <!--Fim da Tela de perguntas-->
 
+    <!--Container onde ficará os jogos-->
+    <div id="game" class="d-none"></div>
+
     <!--JS da página-->
     <script src="js/ranque.js"></script>
     <script src="js/jogar.js"></script>
     <script src="js/selecionarMinijogo.js"></script>
+    <script src="js/campoMinado.js"></script>
     <!---------------->
     
     <!--Dependências do Bootstrap-->

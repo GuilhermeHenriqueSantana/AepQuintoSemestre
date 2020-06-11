@@ -41,7 +41,12 @@ public class UsuariosController {
 	@Transactional
 	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioForm form){
 		Usuario usuario = form.converter();
-		usuarioRepository.save(usuario);
+		Optional<Usuario> usuarioOptional = usuarioRepository.buscarPeloNome(usuario.getNome());
+		if(usuarioOptional.isPresent()) {
+			usuario = usuarioOptional.get();
+		}else {
+			usuarioRepository.save(usuario);			
+		}
 		return ResponseEntity.ok(new UsuarioDto(usuario));
 	}
 	

@@ -48,8 +48,12 @@ public class PontuacaoController {
 		Usuario usuario =  usuarioRepository.getOne(form.getIdUsuario());
 		Pontuacao pontuacao = form.converter(usuario);	
 		Long idRemover = null;
-		if(usuario.getPontuacao() != null) {	
-			idRemover = usuario.getPontuacao().getId();
+		if(usuario.getPontuacao() != null) {
+			if(pontuacao.getPontuacaoTotal() > usuario.getPontuacao().getPontuacaoTotal()) {
+				idRemover = usuario.getPontuacao().getId();				
+			}else {
+				pontuacao = usuario.getPontuacao();
+			}
 		}		
 		usuario.setPontuacao(pontuacao);
 		pontuacaoRepository.save(pontuacao);

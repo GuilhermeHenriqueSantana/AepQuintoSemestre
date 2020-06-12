@@ -1,7 +1,3 @@
-function randomInt(min, max) {
-  return min + Math.floor((max - min) * Math.random());
-}
-
 function getValorDoBloco(element) {
   const linha = element.getAttribute('data-linha')
   const coluna = element.getAttribute('data-coluna')
@@ -39,7 +35,7 @@ const tabuleiroCampoMinado = {
   CONTAIER_GAME: document.querySelector('#game'),
   QUANT_LINHAS_COLUNAS: 7,
   cliques: undefined,
-  QUANT_CLIQUES_PARA_GANHAR: 15,
+  QUANT_CLIQUES_PARA_GANHAR: 1,
   QUANT_BOMBAS: 7,
   posicoesBombas: {linha: [], coluna: []},
   valoresBlocos: [],
@@ -49,7 +45,7 @@ const tabuleiroCampoMinado = {
     this.posicoesBombas.linha = []
     this.posicoesBombas.coluna = []
     this.valoresBlocos = []
-
+    
     this.construirTabuleiro()
   },
 
@@ -272,8 +268,6 @@ const tabuleiroCampoMinado = {
 
   finalizar(resultado) {
     this.desabilitarCliquesDeTodosOsBlocos()
-    setTimeout(() => {
-      campoMinadoFinalizado(resultado)
-    }, 1700)
+    setTimeout(() => {gameFinalizado(resultado)}, 2000)
   }
 }

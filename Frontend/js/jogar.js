@@ -3,7 +3,10 @@ document.querySelector('#btn-jogar').onclick = function() {
   document.querySelector('#tela-principal').classList.add('d-none')
   document.querySelector('#tela-perguntas').classList.remove('d-none')
 
-  jogo.iniciar()
+  $.get("http://localhost:8080/pergunta", function(resultado){
+    perguntas = resultado
+    jogo.iniciar()
+  })
 }
 
 //Onclick botão retornar
@@ -12,61 +15,8 @@ document.querySelector('#icone-return').onclick = function() {
   document.querySelector('#tela-principal').classList.remove('d-none')
 }
 
-//Dados dos enunciados, alternativas, justificativas e quais são corretas
-const perguntas = [
-  {
-    enunciado: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?',
 
-    alternativa: [
-      {
-        texto: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: false,
-        justificativa: 'Justificativa 01... ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos aHimenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nulccumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.'
-      },
-      {
-        texto: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: false,
-        justificativa: 'Justificativa 02... ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos aHimenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nulccumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.'
-      },
-      {
-        texto: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: false,
-        justificativa: 'Justificativa 03... ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos aHimenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nulccumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.'
-      },
-      {
-        texto: 'Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: true,
-        justificativa: ''
-      },
-    ]
-  },
-  {
-    enunciado: 'vulpasdadadadsvel per arcu dictum duis at inceptos accumsanuasdadadadsvel per arcu dictum duis at inceptos accumsantor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?',
-
-    alternativa: [
-      {
-        texto: 'ceptos accumsan, vulputate mattis alHimenaeos vel per arcu dictum duis at iniquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: false,
-        justificativa: ''
-      },
-      {
-        texto: 'ceptos accumsan, vulputate mattis alHimenaeos vel per arcu dictum duis at iniquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut..',
-        correta: false,
-        justificativa: ''
-      },
-      {
-        texto: 'ceptos accumsan, vulputate mattis alHimenaeos vel per arcu dictum duis at iniquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: true,
-        justificativa: 'Justificativa 01... vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.'
-      },
-      {
-        texto: 'ceptos accumsan, vulputate mattis alHimenaeos vel per arcu dictum duis at iniquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.',
-        correta: false,
-        justificativa: ''
-      },
-    ]
-  }
-]
+let perguntas
 
 const jogo = {
   contadorDoTempoFoiIniciado: false,
@@ -149,7 +99,7 @@ const jogo = {
 
     this.CONTAINER_PERGUNTA.appendChild(containerAlternativa)
     
-    perguntas[this.perguntaAtual].alternativa.forEach((alternativa, index) => {
+    perguntas[this.perguntaAtual].alternativas.forEach((alternativa, index) => {
       let checked = ''
       if (index === 0)
         checked = `checked="checked"`  
@@ -164,7 +114,7 @@ const jogo = {
               </label>
             </div>
             
-            <p class="text-center">${alternativa.texto}</p>
+            <p class="text-center">${alternativa.enunciado}</p>
           </div>
         </div>
       `
@@ -187,7 +137,7 @@ const jogo = {
   construirJustificativa() {
     const containersAlternativa = document.querySelectorAll('.container-alternativa')
 
-    perguntas[this.perguntaAtual].alternativa.forEach((alternativa, index) => {
+    perguntas[this.perguntaAtual].alternativas.forEach((alternativa, index) => {
       if (alternativa.justificativa !== '') {
         const containerIconeJustificativa = document.createElement('div')
         containerIconeJustificativa.classList.add('align-self-end')
@@ -212,7 +162,7 @@ const jogo = {
         containerJustificativa.classList.add('container-justificativa')
         containerJustificativa.classList.add('d-none')
 
-        if (alternativa.correta)
+        if (alternativa.verdadeira)
           containerJustificativa.classList.add('alternativa-correta')
         else  
           containerJustificativa.classList.add('alternativa-incorreta')
@@ -227,12 +177,26 @@ const jogo = {
     })
   },
 
+  revelarUmaAlternativaIncorretaAleatoriamente() {
+    const pergunta = perguntas[this.perguntaAtual]
+    let foiRevelada = false
+    do {
+      const indiceAlternativa = randomInt(0, pergunta.alternativas.length - 1)
+
+      if (!pergunta.alternativas[indiceAlternativa].verdadeira) {
+        document.querySelectorAll('.container-alternativa')[indiceAlternativa].classList.add('alternativa-incorreta')
+        foiRevelada = true
+      }
+
+    } while (!foiRevelada)
+  },
+
   corrigir() {
     const radios = document.querySelectorAll('input[type="radio"]')
 
     //Definir cor dar bordas das alternativas (vermelho ou verde)
     radios.forEach((element, index) => {
-      if (perguntas[this.perguntaAtual].alternativa[index].correta) {
+      if (perguntas[this.perguntaAtual].alternativas[index].verdadeira) {
         if (element.checked && !this.foiCorrigida)
           this.acertos++
         radios[index].parentNode.parentNode.parentNode.parentNode.classList.add('alternativa-correta')
@@ -263,6 +227,9 @@ const jogo = {
   },
 
   finalizar() {
-    document.write(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
+    document.querySelector('#tela-perguntas').classList.add('d-none')
+    document.querySelector('#tela-principal').classList.remove('d-none')
+
+   console.log(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
   }
 }

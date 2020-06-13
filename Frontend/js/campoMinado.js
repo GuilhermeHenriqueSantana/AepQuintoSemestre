@@ -9,7 +9,7 @@ function alterarValorEstiloDoBloco(element) {
   const value = getValorDoBloco(element)
 
   element.innerText = value
-  element.style.color = value === "X"? "black" : 'rgb(71, 89, 255)'
+  element.style.color = value === "X" ? "black" : 'rgb(71, 89, 255)'
   element.parentElement.style.backgroundColor = 'transparent'
 }
 
@@ -26,7 +26,7 @@ function revelar(element) {
 }
 
 function revelarConteudoDoBloco() {
-  this.onclick = () => {}
+  this.onclick = () => { }
   const conteudo = this.firstElementChild
   revelar(conteudo)
 }
@@ -37,7 +37,7 @@ const tabuleiroCampoMinado = {
   cliques: undefined,
   QUANT_CLIQUES_PARA_GANHAR: 1,
   QUANT_BOMBAS: 7,
-  posicoesBombas: {linha: [], coluna: []},
+  posicoesBombas: { linha: [], coluna: [] },
   valoresBlocos: [],
 
   iniciar() {
@@ -45,23 +45,23 @@ const tabuleiroCampoMinado = {
     this.posicoesBombas.linha = []
     this.posicoesBombas.coluna = []
     this.valoresBlocos = []
-    
+
     this.construirTabuleiro()
   },
 
   embaralharArray(array) {
     var indice_atual = array.length, valor_temporario, indice_aleatorio;
- 
+
     while (0 !== indice_atual) {
- 
-        indice_aleatorio = Math.floor(Math.random() * indice_atual);
-        indice_atual -= 1;
- 
-        valor_temporario = array[indice_atual];
-        array[indice_atual] = array[indice_aleatorio];
-        array[indice_aleatorio] = valor_temporario;
+
+      indice_aleatorio = Math.floor(Math.random() * indice_atual);
+      indice_atual -= 1;
+
+      valor_temporario = array[indice_atual];
+      array[indice_atual] = array[indice_aleatorio];
+      array[indice_aleatorio] = valor_temporario;
     }
- 
+
     return array;
   },
 
@@ -69,8 +69,8 @@ const tabuleiroCampoMinado = {
     this.definirValoresDosBlocos()
 
     //Cria enunciado
-    const enunciado = 
-    `
+    const enunciado =
+      `
       <h4 id="enunciado-campo-minado">
         Encontre mais 
           <span>${this.QUANT_CLIQUES_PARA_GANHAR - this.cliques} </span> 
@@ -79,7 +79,7 @@ const tabuleiroCampoMinado = {
 
       <h5>Quantidade de bombas: ${this.QUANT_BOMBAS}</h5>
     `
-    
+
     //Cria div class="tabuleiro"
     const elementoTabuleiro = document.createElement('div')
     elementoTabuleiro.classList.add('tabuleiro')
@@ -88,29 +88,29 @@ const tabuleiroCampoMinado = {
     this.CONTAIER_GAME.innerHTML = enunciado
 
     this.CONTAIER_GAME.appendChild(elementoTabuleiro)
-  
+
 
     for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       //Cria div class="linha"
       let linha = document.createElement('div')
       linha.classList.add('linha')
-  
+
       for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
         //Cria div class="bloco"
         let novoBloco = document.createElement('div')
         novoBloco.classList.add('bloco')
         novoBloco.onclick = revelarConteudoDoBloco
-        
+
         //Cria div class="conteudo"
         let conteudoBloco = document.createElement('span')
         conteudoBloco.classList.add('conteudo')
         conteudoBloco.setAttribute('data-linha', i)
         conteudoBloco.setAttribute('data-coluna', j)
-  
+
         novoBloco.appendChild(conteudoBloco)
         linha.appendChild(novoBloco)
       }
-  
+
       elementoTabuleiro.appendChild(linha)
     }
   },
@@ -161,7 +161,7 @@ const tabuleiroCampoMinado = {
 
     for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       this.valoresBlocos[i] = [this.QUANT_LINHAS_COLUNAS]
-    } 
+    }
 
     //Define as bombas
     let count = 0
@@ -169,11 +169,11 @@ const tabuleiroCampoMinado = {
     for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
         if (this.possuiBombaNosIndices(i, j))
-          this.valoresBlocos[i][j] = "X"  
+          this.valoresBlocos[i][j] = "X"
       }
-    } 
-  
-    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {   
+    }
+
+    for (let i = 0; i < this.QUANT_LINHAS_COLUNAS; i++) {
       for (let j = 0; j < this.QUANT_LINHAS_COLUNAS; j++) {
         if (this.possuiBombaNosIndices(i, j))
           continue;
@@ -189,57 +189,57 @@ const tabuleiroCampoMinado = {
             valor++
           if (this.possuiBombaNosIndices(1, 1))
             valor++
-        } 
-        else
-        //Superior direito
-        if (i == 0 && j == this.QUANT_LINHAS_COLUNAS - 1) {
-          if (this.possuiBombaNosIndices(0, this.QUANT_LINHAS_COLUNAS - 1))
-            valor++
-          if (this.possuiBombaNosIndices(1, this.QUANT_LINHAS_COLUNAS - 2))
-            valor++
-          if (this.possuiBombaNosIndices(1, this.QUANT_LINHAS_COLUNAS - 1))
-            valor++
         }
         else
-        //inferior esquerdo
-        if (i == this.QUANT_LINHAS_COLUNAS - 1 && j == 0) {
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, 0))
-            valor++
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, 1))
-            valor++
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 1, 1))
-            valor++
-        }
+          //Superior direito
+          if (i == 0 && j == this.QUANT_LINHAS_COLUNAS - 1) {
+            if (this.possuiBombaNosIndices(0, this.QUANT_LINHAS_COLUNAS - 1))
+              valor++
+            if (this.possuiBombaNosIndices(1, this.QUANT_LINHAS_COLUNAS - 2))
+              valor++
+            if (this.possuiBombaNosIndices(1, this.QUANT_LINHAS_COLUNAS - 1))
+              valor++
+          }
+          else
+            //inferior esquerdo
+            if (i == this.QUANT_LINHAS_COLUNAS - 1 && j == 0) {
+              if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, 0))
+                valor++
+              if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, 1))
+                valor++
+              if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 1, 1))
+                valor++
+            }
 
-        else
-        //inferior direito
-        if (i == this.QUANT_LINHAS_COLUNAS - 1 && j == this.QUANT_LINHAS_COLUNAS - 1) {
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, this.QUANT_LINHAS_COLUNAS - 1))
-            valor++
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, this.QUANT_LINHAS_COLUNAS - 2))
-            valor++
-          if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 1, this.QUANT_LINHAS_COLUNAS - 1))
-            valor++
-        }
+            else
+              //inferior direito
+              if (i == this.QUANT_LINHAS_COLUNAS - 1 && j == this.QUANT_LINHAS_COLUNAS - 1) {
+                if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, this.QUANT_LINHAS_COLUNAS - 1))
+                  valor++
+                if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 2, this.QUANT_LINHAS_COLUNAS - 2))
+                  valor++
+                if (this.possuiBombaNosIndices(this.QUANT_LINHAS_COLUNAS - 1, this.QUANT_LINHAS_COLUNAS - 1))
+                  valor++
+              }
 
-        else {
-          if (this.possuiBombaNosIndices(i - 1, j - 1))
-            valor++
-          if (this.possuiBombaNosIndices(i - 1, j))
-            valor++
-          if (this.possuiBombaNosIndices(i - 1, j + 1))
-            valor++
-          if (this.possuiBombaNosIndices(i, j - 1))
-            valor++
-          if (this.possuiBombaNosIndices(i, j + 1))
-            valor++
-          if (this.possuiBombaNosIndices(i + 1, j - 1))
-            valor++
-          if (this.possuiBombaNosIndices(i + 1, j))
-            valor++
-          if (this.possuiBombaNosIndices(i + 1, j + 1))
-            valor++
-        }
+              else {
+                if (this.possuiBombaNosIndices(i - 1, j - 1))
+                  valor++
+                if (this.possuiBombaNosIndices(i - 1, j))
+                  valor++
+                if (this.possuiBombaNosIndices(i - 1, j + 1))
+                  valor++
+                if (this.possuiBombaNosIndices(i, j - 1))
+                  valor++
+                if (this.possuiBombaNosIndices(i, j + 1))
+                  valor++
+                if (this.possuiBombaNosIndices(i + 1, j - 1))
+                  valor++
+                if (this.possuiBombaNosIndices(i + 1, j))
+                  valor++
+                if (this.possuiBombaNosIndices(i + 1, j + 1))
+                  valor++
+              }
 
         this.valoresBlocos[i][j] = valor
       }
@@ -253,7 +253,7 @@ const tabuleiroCampoMinado = {
     if (value === 'X') {
       revelarTudo()
       this.finalizar('perdeu')
-    } 
+    }
     else if (this.cliques === this.QUANT_CLIQUES_PARA_GANHAR) {
       this.finalizar('ganhou')
     }
@@ -261,13 +261,13 @@ const tabuleiroCampoMinado = {
 
   desabilitarCliquesDeTodosOsBlocos() {
     document.querySelectorAll('.bloco').forEach(element => {
-      element.onclick = () => {}
+      element.onclick = () => { }
     })
   }
   ,
 
   finalizar(resultado) {
     this.desabilitarCliquesDeTodosOsBlocos()
-    setTimeout(() => {gameFinalizado(resultado)}, 2000)
+    setTimeout(() => { gameFinalizado(resultado) }, 2000)
   }
 }

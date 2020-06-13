@@ -1,16 +1,13 @@
 //Onclick botão jogar
-document.querySelector('#btn-jogar').onclick = function() {
+document.querySelector('#btn-jogar').onclick = function () {
   document.querySelector('#tela-principal').classList.add('d-none')
   document.querySelector('#tela-perguntas').classList.remove('d-none')
 
-  $.get("http://localhost:8080/pergunta", function(resultado){
-    perguntas = resultado
-    jogo.iniciar()
-  })
+  getPerguntas()
 }
 
 //Onclick botão retornar
-document.querySelector('#icone-return').onclick = function() {
+document.querySelector('#icone-return').onclick = function () {
   document.querySelector('#tela-perguntas').classList.add('d-none')
   document.querySelector('#tela-principal').classList.remove('d-none')
 }
@@ -58,7 +55,7 @@ const jogo = {
     this.atualizarQuantidadeDeDicas(this.quantidadeDeDicas)
     document.querySelector('#numero-questao-atual').innerHTML = this.perguntaAtual + 1
     document.querySelector('#numero-quantidade-questoes').innerHTML = perguntas.length
-    
+
     if (!this.contadorDoTempoFoiIniciado) {
       this.contadorDoTempoFoiIniciado = true
       //Atualizar contador
@@ -66,7 +63,7 @@ const jogo = {
         if (!this.estaPausado) {
           this.tempoGastoMS += 1000
           const elemento = document.querySelector('#tempo-gasto')
-    
+
           elemento.innerText = `${this.tempoGastoMS / 1000}s`
         }
       }, 1000)
@@ -82,8 +79,8 @@ const jogo = {
   },
 
   construirEnunciado() {
-    const enunciado = 
-    `
+    const enunciado =
+      `
       <section id="enunciado">
         <p>
           ${perguntas[this.perguntaAtual].enunciado}
@@ -98,13 +95,13 @@ const jogo = {
     containerAlternativa.id = 'container-alternativas'
 
     this.CONTAINER_PERGUNTA.appendChild(containerAlternativa)
-    
+
     perguntas[this.perguntaAtual].alternativas.forEach((alternativa, index) => {
       let checked = ''
       if (index === 0)
-        checked = `checked="checked"`  
-      const divAlternativa = 
-      `
+        checked = `checked="checked"`
+      const divAlternativa =
+        `
         <div class="container-alternativa">
           <div class="texto-alternativa">
             <div class="div-checkbox">
@@ -124,8 +121,8 @@ const jogo = {
   },
 
   construirBotaoDeProxima() {
-    this.CONTAINER_PERGUNTA.innerHTML += 
-    `
+    this.CONTAINER_PERGUNTA.innerHTML +=
+      `
       <footer class="d-flex justify-content-end mt-3">
         <button class="btn btn-outline-success" onclick="jogo.corrigir()">
           Próxima
@@ -148,7 +145,7 @@ const jogo = {
         iconeJustificativa.classList.add('icone-justificativa')
         iconeJustificativa.innerHTML = 'remove_red_eye'
 
-        iconeJustificativa.onclick = function() {
+        iconeJustificativa.onclick = function () {
           this.parentNode.parentNode.lastElementChild.classList.toggle('d-none')
         }
 
@@ -164,7 +161,7 @@ const jogo = {
 
         if (alternativa.verdadeira)
           containerJustificativa.classList.add('alternativa-correta')
-        else  
+        else
           containerJustificativa.classList.add('alternativa-incorreta')
 
         const textoJustificativa = document.createElement('p')
@@ -230,6 +227,6 @@ const jogo = {
     document.querySelector('#tela-perguntas').classList.add('d-none')
     document.querySelector('#tela-principal').classList.remove('d-none')
 
-   console.log(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
+    console.log(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
   }
 }

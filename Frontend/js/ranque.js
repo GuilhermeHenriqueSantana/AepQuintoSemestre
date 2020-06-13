@@ -80,11 +80,11 @@ const tabela = {
   CONTAINER_TABELA: document.querySelector('#tabela-ranque'),
   construir() {
     this.CONTAINER_TABELA.innerHTML = ''
-    
+
     const tabela = document.createElement('table')
     tabela.classList.add('table')
     this.CONTAINER_TABELA.appendChild(tabela)
-    
+
     const tHead = `
     <thead>
       <tr>
@@ -96,7 +96,7 @@ const tabela = {
     </thead>
     `
     tabela.innerHTML += tHead
-    
+
     const tBody = document.createElement('tbody')
     tabela.appendChild(tBody)
 

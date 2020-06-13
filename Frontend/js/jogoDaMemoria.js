@@ -10,7 +10,7 @@ const tabuleiroMemoria = {
   countClickBloco: undefined,
   countErros: undefined,
   errosPermitidos: undefined,
-  
+
   iniciar() {
     this.GAME_CONTAINER.innerHTML = ''
     this.countClickBloco = 0
@@ -19,51 +19,51 @@ const tabuleiroMemoria = {
     this.cards = []
     this.acertos = []
     this.errosPermitidos = 2
-    
+
     this.construir()
   },
 
   construirHeader() {
-    this.GAME_CONTAINER.innerHTML = 
-    `
+    this.GAME_CONTAINER.innerHTML =
+      `
       <h3>Erros permitidos: <span>${this.errosPermitidos}</span></h3>
     `
   },
-  
+
   construir() {
     this.construirHeader()
 
 
     if (this.QUANT_CARD % 2 == 1)
-    this.QUANT_CARD++
-    
+      this.QUANT_CARD++
+
     this.definirPosicoesDosCards()
-    
+
     const novoTabuleiro = document.createElement('div')
     novoTabuleiro.classList.add('tabuleiro-memoria')
-    
+
     this.GAME_CONTAINER.appendChild(novoTabuleiro)
-    
+
     let index = 0
     for (let i = 0; i < this.QUANT_LINHA; i++) {
       const novaLinha = document.createElement('div')
       novaLinha.classList.add('linha-card')
-      
+
       novoTabuleiro.appendChild(novaLinha)
       for (let j = 0; j < this.QUANT_CARD / this.QUANT_LINHA; j++) {
-        
+
         const novoCard = document.createElement('div')
         novoCard.classList.add('card-memoria')
         novoCard.setAttribute('data-linha', this.cards[index].linha)
         novoCard.setAttribute('data-coluna', this.cards[index].coluna)
         novoCard.onclick = this.revelarConteudoDoCard
-        
+
         const novoConteudoCard = document.createElement('span')
         novoConteudoCard.classList.add('conteudo-card')
-        
+
         novoCard.appendChild(novoConteudoCard)
         novaLinha.appendChild(novoCard)
-        
+
         index++
       }
     }
@@ -74,26 +74,26 @@ const tabuleiroMemoria = {
       this.GAME_CONTAINER.firstElementChild.firstElementChild.innerText = this.errosPermitidos - this.countErros
     }
   },
-  
+
   revelarConteudoDoCard() {
     const element = this
-    
+
     if (tabuleiroMemoria.countClickBloco > 2)
-    return
-    
+      return
+
     const linha = element.getAttribute('data-linha')
     const coluna = element.getAttribute('data-coluna')
-    
+
     const card = tabuleiroMemoria.obterCardPorLinhaColuna(linha, coluna)
-    
+
     element.firstElementChild.innerText = card.conteudo
-    
+
     tabuleiroMemoria.elementosExpostosNaVez[tabuleiroMemoria.countClickBloco] = card
-    
+
     tabuleiroMemoria.countClickBloco++
-    
-    if (tabuleiroMemoria.countClickBloco === 2){
-      tabuleiroMemoria.verificarSeAcertouOuErrouPar()     
+
+    if (tabuleiroMemoria.countClickBloco === 2) {
+      tabuleiroMemoria.verificarSeAcertouOuErrouPar()
       tabuleiroMemoria.verificarSeEscondeOPar(linha, coluna)
     }
 
@@ -108,11 +108,11 @@ const tabuleiroMemoria = {
       tabuleiroMemoria.acertos.push(tabuleiroMemoria.elementosExpostosNaVez[1])
 
       return true
-    } 
+    }
     //Errou
     tabuleiroMemoria.countErros++
 
-    tabuleiroMemoria.atualizarHeader()    
+    tabuleiroMemoria.atualizarHeader()
     return false
   },
 
@@ -126,28 +126,28 @@ const tabuleiroMemoria = {
       }, mili)
     }
   },
-  
+
   desabilitarCliqueDoElemento(linha, coluna) {
     document.querySelectorAll('.card-memoria').forEach((element) => {
       const linhaElemento = element.getAttribute('data-linha')
       const colunaElemento = element.getAttribute('data-coluna')
-      
-      if (linha == linhaElemento && coluna == colunaElemento) 
-      element.onclick = () => {}
+
+      if (linha == linhaElemento && coluna == colunaElemento)
+        element.onclick = () => { }
     })
   },
-  
+
   //Atribui no onclick dos elementos blocos
   esconder(linha, coluna) {
     const conteudoCards = document.querySelectorAll('.card-memoria')
-  
+
     for (let i = 0; i < conteudoCards.length; i++) {
       const linhaElemento = conteudoCards[i].getAttribute('data-linha')
       const colunaElemento = conteudoCards[i].getAttribute('data-coluna')
-  
+
       if (tabuleiroMemoria.acertos.includes(tabuleiroMemoria.obterCardPorLinhaColuna(linha, coluna)))
         return
-  
+
       if (linhaElemento == linha && colunaElemento == coluna) {
         conteudoCards[i].firstElementChild.innerText = ''
         return
@@ -158,25 +158,25 @@ const tabuleiroMemoria = {
   obterCardPorLinhaColuna(linha, coluna) {
     for (let i = 0; i < this.cards.length; i++) {
       if (this.cards[i].linha == linha && this.cards[i].coluna == coluna)
-      return this.cards[i]
+        return this.cards[i]
     }
-    
+
     return undefined
   },
-  
+
   embaralharCards(array) {
     var indice_atual = array.length, valor_temporario, indice_aleatorio;
- 
+
     while (0 !== indice_atual) {
- 
-        indice_aleatorio = Math.floor(Math.random() * indice_atual);
-        indice_atual -= 1;
- 
-        valor_temporario = array[indice_atual];
-        array[indice_atual] = array[indice_aleatorio];
-        array[indice_aleatorio] = valor_temporario;
+
+      indice_aleatorio = Math.floor(Math.random() * indice_atual);
+      indice_atual -= 1;
+
+      valor_temporario = array[indice_atual];
+      array[indice_atual] = array[indice_aleatorio];
+      array[indice_aleatorio] = valor_temporario;
     }
- 
+
     return array;
   },
 
@@ -219,6 +219,6 @@ const tabuleiroMemoria = {
   },
 
   finalizar(resultado) {
-    setTimeout(() => {gameFinalizado(resultado)}, 2000)
+    setTimeout(() => { gameFinalizado(resultado) }, 2000)
   }
 }

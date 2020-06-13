@@ -1,13 +1,13 @@
 //Onclick imagem minijogo
 document.querySelectorAll('.imagem-minijogo').forEach(element => {
-  element.onclick = function() {
+  element.onclick = function () {
     jogo.atualizarQuantidadeDeDicas(jogo.quantidadeDeDicas - 1)
   }
 })
 
 function iniciarUmMinijogo() {
   document.querySelector('#tela-perguntas').classList.add('d-none')
-  
+
   document.querySelector('#game').classList.remove('d-none')
   jogo.atualizarQuantidadeDeDicas(jogo.quantidadeDeDicas - 1)
 }
@@ -21,7 +21,7 @@ document.querySelector('#container-memoria').onclick = () => {
 
 document.querySelector('#container-campo-minado').onclick = () => {
   if (jogo.quantidadeDeDicas > 0) {
-    iniciarUmMinijogo()  
+    iniciarUmMinijogo()
     tabuleiroCampoMinado.iniciar()
   }
 }
@@ -34,8 +34,8 @@ function gameFinalizado(resultado) {
     jogo.revelarUmaAlternativaIncorretaAleatoriamente()
   }
 
-  document.querySelector('#game').innerHTML += 
-  `
+  document.querySelector('#game').innerHTML +=
+    `
     <div class="container-resultado" style="border-color: ${cor}">
       <h2 class="text-center" style="color: ${cor}">Você ${resultado}</h2>
     </div>

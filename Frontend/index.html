@@ -47,16 +47,16 @@
   
               <div class="modal-body">
                 <div class="d-flex flex-column align-items-center">
-                    <i class="material-icons text-primary" id="icon-user-modal" data-toggle="modal" data-target="#exampleModalCenter">person</i>
-                
-                    <input type="text" placeholder="apelido" class="w-100 mb-3">
+                  <i class="material-icons text-primary" id="icon-user-modal" data-toggle="modal" data-target="#exampleModalCenter">person</i>
+              
+                  <input id="input-apelido" type="text" placeholder="apelido" class="w-100 mb-3">
   
                 </div>
               </div>
   
               <div class="modal-footer d-flex justify-content-around">
-                <button class="btn btn-outline-danger" data-dismiss="modal">Desvincular</button>
-                <button type="button" class="btn btn-outline-success" data-dismiss="modal">
+                <button id="btn-desvincular-apelido" class="btn btn-outline-danger" data-dismiss="modal">Desvincular</button>
+                <button id="btn-confirmar-apelido" type="button" class="btn btn-outline-success" data-dismiss="modal">
                   Confirmar / Alterar
                 </button>
               </div>
@@ -190,87 +190,6 @@
 
       <main>
         <div id="container-pergunta" class="container mt-3">
-          <section id="enunciado">
-            <p>Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut. vehicula eros turpis interdum iaculis aenean fusce elit suscipit, pulvinar et dictumst ut sodales torquent hac, sapien porta tortor sapien consequat gravida est?</p>
-          </section>
-
-          <section id="container-alternativas">
-            <div class="container-alternativa">
-              <div class="texto-alternativa">
-                <div class="div-checkbox">
-                  <label class="label-checkbox">
-                    <input type="radio" checked="checked" name="alternatina">
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
-              </div>
-              
-              <div class="align-self-end text-primary">
-                <i class="material-icons icone-justificativa">remove_red_eye</i>
-              </div>
-
-              <div class="container-justificativa d-none">
-                <h4>Justificativa</h4>
-
-                <p>Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
-              </div>
-            </div>
-
-            <div class="container-alternativa">
-              <div class="texto-alternativa">
-                <div class="div-checkbox">
-                  <label class="label-checkbox">
-                    <input type="radio" name="alternatina">
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
-              </div>
-              
-              <div class="align-self-end text-primary">
-                <i class="material-icons icone-justificativa">remove_red_eye</i>
-              </div>
-            </div>
-
-            <div class="container-alternativa">
-              <div class="texto-alternativa">
-                <div class="div-checkbox">
-                  <label class="label-checkbox">
-                    <input type="radio" name="alternatina">
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
-              </div>
-              
-              <div class="align-self-end text-primary">
-                <i class="material-icons icone-justificativa">remove_red_eye</i>
-              </div>
-            </div>
-
-            <div class="container-alternativa">
-              <div class="texto-alternativa">
-                <div class="div-checkbox">
-                  <label class="label-checkbox">
-                    <input type="radio" name="alternatina">
-                    <span class="checkmark"></span>
-                  </label>
-                </div>
-                <p class="text-center">Himenaeos vel per arcu dictum duis at inceptos accumsan, vulputate mattis aliquet ad bibendum nibh tortor lobortis tortor, nullam malesuada gravida ornare quisque luctus ut.</p>
-              </div>
-              
-              <div class="align-self-end text-primary">
-                <i class="material-icons icone-justificativa">remove_red_eye</i>
-              </div>
-            </div>
-          </section>
-
-          <footer class="d-flex justify-content-end mt-3">
-            <button class="btn btn-outline-success" onclick="corrigir()">
-              Próxima
-            </button>
-          </footer>
         </div>
       </main>
     </div>
@@ -284,6 +203,8 @@
 
     <!--JS da página-->
     <script src="js/utilitarios.js"></script>
+    <script src="js/requisicoesAjax.js"></script>
+    <script src="js/telaPrincipal.js"></script>
     <script src="js/ranque.js"></script>
     <script src="js/jogar.js"></script>
     <script src="js/selecionarMinijogo.js"></script>

@@ -1,7 +1,6 @@
 function obterMeuRanque(dados) {
   dados.forEach((element, index) => {
     if (usuarioLogado.nome === element.nomeUsuario) {
-      console.log('teste')
       meuRanque = {
         posicao: index + 1,
         nomeUsuario: element.nomeUsuario,

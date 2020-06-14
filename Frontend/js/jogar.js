@@ -1,11 +1,3 @@
-//Onclick botão jogar
-document.querySelector('#btn-jogar').onclick = function () {
-  document.querySelector('#tela-principal').classList.add('d-none')
-  document.querySelector('#tela-perguntas').classList.remove('d-none')
-
-  getPerguntas()
-}
-
 //Onclick botão retornar
 document.querySelector('#icone-return').onclick = function () {
   document.querySelector('#tela-perguntas').classList.add('d-none')
@@ -124,8 +116,8 @@ const jogo = {
     this.CONTAINER_PERGUNTA.innerHTML +=
       `
       <footer class="d-flex justify-content-end mt-3">
-        <button class="btn btn-outline-success" onclick="jogo.corrigir()">
-          Próxima
+        <button id="btn-proxima" class="btn btn-outline-success" onclick="jogo.corrigir()">
+          <span>Próxima</span>
         </button>
       </footer>
     `
@@ -189,6 +181,9 @@ const jogo = {
   },
 
   corrigir() {
+    if (this.perguntaAtual === perguntas.length - 1)
+      document.querySelector('#btn-proxima').onclick = () => { jogo.finalizar() }
+
     const radios = document.querySelectorAll('input[type="radio"]')
 
     //Definir cor dar bordas das alternativas (vermelho ou verde)
@@ -218,15 +213,25 @@ const jogo = {
 
     if (this.perguntaAtual < perguntas.length) {
       this.construir()
-    } else {
-      this.finalizar()
     }
   },
 
   finalizar() {
+    postPontuacao(this.acertos, this.tempoGastoMS)
+
+    this.pausarTemporizador()
+    this.CONTAINER_PERGUNTA.innerHTML +=
+      `
+      <div class="container-fim-perguntas">
+        <h4 class="mt-4">Você acertou ${this.acertos} pergunta(s) em ${this.tempoGastoMS / 1000} segundos.</h4>
+        <h5 class="mt-4 ">Acesse o ranque para verificar a sua posição.</h5>
+        <button class="btn btn-outline-success mt-4" onclick="jogo.irMenuPrincipal()">Ir para o menu principal</button>
+      </div>
+    `
+  },
+
+  irMenuPrincipal() {
     document.querySelector('#tela-perguntas').classList.add('d-none')
     document.querySelector('#tela-principal').classList.remove('d-none')
-
-    console.log(`Total de acertos = ${this.acertos} de ${perguntas.length}. Tempo gasto = ${this.tempoGastoMS / 1000}s`)
   }
 }

@@ -67,13 +67,13 @@
         
       </header>
   
-      <main id="main-tela-perguntas" class="container-fluid d-flex align-items-center">     
+      <main id="main-tela-principal" class="container-fluid d-flex align-items-center">     
         <div class="container d-flex justify-content-between align-items-center">
           <!--Menu de opções-->
           <section>
             <ul id="lista-menu-principal" class="list-unstyled">
               <li><button id="btn-jogar" class="btn btn-outline-primary mb-5">Jogar</button></li>
-              <li><button id="btn-ranque" class="btn btn-outline-primary mb-5" data-toggle="modal" data-target="#modal-ranque" onclick="tabela.construir()">Ranque</button></li>
+              <li><button id="btn-modal-ranque" class="d-none" data-toggle="modal" data-target="#modal-ranque"></button><button id="btn-ranque" class="btn btn-outline-primary mb-5">Ranque</button></li>
               <li><button id="btn-manual" class="btn btn-outline-primary" data-toggle="modal" data-target="#modal-manual">Manual</button></li>
             </ul>  
           </section>
@@ -192,6 +192,7 @@
         <div id="container-pergunta" class="container mt-3">
         </div>
       </main>
+
     </div>
     <!--Fim da Tela de perguntas-->
 

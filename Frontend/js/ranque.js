@@ -1,77 +1,98 @@
-function obterMeuRanque() {
-  //Lógica para obter o meu ranque
-
-  return (
-    {
-      posicao: 1,
-      apelido: 'Thiago',
-      acertos: 5,
-      tempoGasto: 20000 //Milisegundos 
+function obterMeuRanque(dados) {
+  dados.forEach((element, index) => {
+    if (usuarioLogado.nome === element.nomeUsuario) {
+      console.log('teste')
+      meuRanque = {
+        posicao: index + 1,
+        nomeUsuario: element.nomeUsuario,
+        quantidadeAcertos: element.quantidadeAcertos,
+        tempoGasto: element.quantidadeAcertos //Milisegundos 
+      }
+      
+      return
     }
-  )
+  })
 }
 
-const meuRanque = obterMeuRanque()
+function atualizarDadosDaTabela(dados) {
+  dadosTabela = []
+  document.querySelector('#btn-modal-ranque').click()
 
-const dadosTabela = [
+  for (let i = 0; i < dados.length && i < 10; i++) {
+    dadosTabela.push({
+      posicao: i + 1,
+      nomeUsuario: dados[i].nomeUsuario,
+      quantidadeAcertos: dados[i].quantidadeAcertos,
+      tempoGasto: dados[i].tempoGasto
+    })
+  } 
+
+  obterMeuRanque(dados)
+
+  tabela.construir()
+}
+
+let meuRanque = undefined
+
+let dadosTabela = [
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 14,
-    apelido: 'Pedro',
-    acertos: 5,
+    nomeUsuario: 'Pedro',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   },
   {
     posicao: 1,
-    apelido: 'Apelido',
-    acertos: 5,
+    nomeUsuario: 'nomeUsuario',
+    quantidadeAcertos: 5,
     tempoGasto: 20000 //Milisegundos
   }
 ]
@@ -80,6 +101,14 @@ const tabela = {
   CONTAINER_TABELA: document.querySelector('#tabela-ranque'),
   construir() {
     this.CONTAINER_TABELA.innerHTML = ''
+
+    if (meuRanque === undefined) {
+      this.CONTAINER_TABELA.innerHTML += 
+      `
+        <h5 class="text-center mt-2">Sem dados cadastrados</h5>
+      `
+      return
+    }
 
     const tabela = document.createElement('table')
     tabela.classList.add('table')
@@ -104,15 +133,15 @@ const tabela = {
     dadosTabela.forEach(element => {
       const tr = document.createElement('tr')
 
-      if (element.apelido === meuRanque.apelido) {
+      if (element.nomeUsuario === meuRanque.nomeUsuario) {
         tr.classList.add('text-primary')
         estaNoTop10 = true
       }
 
       tr.innerHTML = `
           <td>${element.posicao}</td>
-          <td>${element.apelido}</td>
-          <td>${element.acertos}</td>
+          <td>${element.nomeUsuario}</td>
+          <td>${element.quantidadeAcertos}</td>
           <td>${element.tempoGasto}</td>
       `
       tBody.appendChild(tr)
@@ -125,8 +154,8 @@ const tabela = {
 
       tr.innerHTML = `
           <td>${meuRanque.posicao}</td>
-          <td>${meuRanque.apelido}</td>
-          <td>${meuRanque.acertos}</td>
+          <td>${meuRanque.nomeUsuario}</td>
+          <td>${meuRanque.quantidadeAcertos}</td>
           <td>${meuRanque.tempoGasto}</td>
       `
       tBody.appendChild(tr)

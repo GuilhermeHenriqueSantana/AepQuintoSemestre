@@ -55,7 +55,7 @@
 }
 
 /* Style the indicator (dot/circle) */
-.container .checkmark:after {
+.div-checkbox .checkmark:after {
   top: 9px;
   left: 9px;
   width: 8px;

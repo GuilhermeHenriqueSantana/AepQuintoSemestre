@@ -8,3 +8,16 @@ p {
   text-indent: 40px;
   margin: 0;
 }
+
+.container-flex-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+}
+
+.container-center {
+  display: flex;
+  justify-content: space-between;
+  min-width: 1200px;
+}

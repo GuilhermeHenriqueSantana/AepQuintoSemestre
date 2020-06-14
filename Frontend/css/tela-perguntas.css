@@ -2,6 +2,7 @@
   background-color: white;
   border-bottom: 1px solid rgb(223, 223, 223);
   height: 70px;
+  width: 100%;
 }
 
 #icone-return {
@@ -58,6 +59,10 @@
 #enunciado {
   margin-top: 25px;
   margin-bottom: 30px;
+}
+
+#container-main-perguntas {
+  min-width: 1200px;
 }
 
 .borda {

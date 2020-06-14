@@ -6,8 +6,7 @@ function obterMeuRanque(dados) {
         nomeUsuario: element.nomeUsuario,
         quantidadeAcertos: element.quantidadeAcertos,
         tempoGasto: element.quantidadeAcertos //Milisegundos 
-      }
-      
+      }     
       return
     }
   })
@@ -101,7 +100,7 @@ const tabela = {
   construir() {
     this.CONTAINER_TABELA.innerHTML = ''
 
-    if (meuRanque === undefined) {
+    if (dadosTabela[0] === undefined) {
       this.CONTAINER_TABELA.innerHTML += 
       `
         <h5 class="text-center mt-2">Sem dados cadastrados</h5>
@@ -127,26 +126,27 @@ const tabela = {
 
     const tBody = document.createElement('tbody')
     tabela.appendChild(tBody)
-
+    
     let estaNoTop10 = false
     dadosTabela.forEach(element => {
       const tr = document.createElement('tr')
 
-      if (element.nomeUsuario === meuRanque.nomeUsuario) {
-        tr.classList.add('text-primary')
-        estaNoTop10 = true
-      }
+      if (meuRanque !== undefined)
+        if (element.nomeUsuario === meuRanque.nomeUsuario) {
+          tr.classList.add('text-primary')
+          estaNoTop10 = true
+        }
 
       tr.innerHTML = `
           <td>${element.posicao}</td>
           <td>${element.nomeUsuario}</td>
           <td>${element.quantidadeAcertos}</td>
-          <td>${element.tempoGasto}</td>
+          <td>${element.tempoGasto / 1000}s</td>
       `
       tBody.appendChild(tr)
     })
 
-    if (!estaNoTop10) {
+    if (!estaNoTop10 && meuRanque !== undefined) {
       const tr = document.createElement('tr')
       tr.classList.add('text-primary')
       tr.classList.add('container-minha-posicao')

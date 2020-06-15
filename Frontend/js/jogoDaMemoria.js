@@ -18,7 +18,7 @@ const tabuleiroMemoria = {
     this.elementosExpostosNaVez = []
     this.cards = []
     this.acertos = []
-    this.errosPermitidos = 2
+    this.errosPermitidos = 20
 
     this.construir()
   },
@@ -86,7 +86,26 @@ const tabuleiroMemoria = {
 
     const card = tabuleiroMemoria.obterCardPorLinhaColuna(linha, coluna)
 
-    element.firstElementChild.innerText = card.conteudo
+    switch (card.conteudo) {
+      case 0:
+        element.firstElementChild.innerHTML = `<img src="./img/ubuntu.png" width="80">`
+        break
+      case 1:
+        element.firstElementChild.innerHTML = `<img src="./img/node.png" width="183 ">`
+        break
+      case 2:
+        element.firstElementChild.innerHTML = `<img src="./img/reactjs.png" width="73">`
+        break
+      case 3:
+        element.firstElementChild.innerHTML = `<img src="./img/git.png" width="72">`
+        break
+      case 4:
+        element.firstElementChild.innerHTML = `<img src="./img/github.png" width="72">`
+        break
+      case 5:
+        element.firstElementChild.innerHTML = `<img src="./img/python.png" width="72">`
+        break;
+    }
 
     tabuleiroMemoria.elementosExpostosNaVez[tabuleiroMemoria.countClickBloco] = card
 

@@ -7,16 +7,17 @@
   justify-content: center;
   align-items: center;
 
-  border: 2px solid tomato;
-  color: tomato;
+  border: 2px solid rgb(2, 117, 216);
+  color: rgb(2, 117, 216);
   height: 100px;
   width: 100px;
-  margin: 4px;
+  margin: 6px;
+  transition: 200ms;
 }
 
 .card-memoria:hover {
-  background-color: tomato;
-  color: white;
+  transition: 200ms;
+  transform: scale(1.06);
   cursor: pointer;
 }
 

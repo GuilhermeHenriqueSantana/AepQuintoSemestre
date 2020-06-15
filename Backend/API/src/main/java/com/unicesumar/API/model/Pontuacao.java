@@ -83,7 +83,8 @@ public class Pontuacao {
 	}
 
 	public void gerarPontuacao() {
-		this.pontuacaoTotal = (1000 * 60 * quantidadeAcertos)/(tempoGasto/100);
+		//this.pontuacaoTotal = (1000 * 60 * quantidadeAcertos)/(tempoGasto/100);
+		this.pontuacaoTotal = (2000 * quantidadeAcertos)+(-tempoGasto/1000+1001);
 	}
 	
 	

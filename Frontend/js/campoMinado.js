@@ -7,9 +7,13 @@ function getValorDoBloco(element) {
 
 function alterarValorEstiloDoBloco(element) {
   const value = getValorDoBloco(element)
-
-  element.innerText = value
-  element.style.color = value === "X" ? "black" : 'rgb(71, 89, 255)'
+  element.parentElement.backgroundColor = 'transparent'
+  if (value === "X") {
+    element.innerHTML = `<img src="./img/bomba.png" width="20">`
+  }
+  else {
+    element.innerText = value
+  }
   element.parentElement.style.backgroundColor = 'transparent'
 }
 
@@ -35,7 +39,7 @@ const tabuleiroCampoMinado = {
   CONTAIER_GAME: document.querySelector('#game'),
   QUANT_LINHAS_COLUNAS: 7,
   cliques: undefined,
-  QUANT_CLIQUES_PARA_GANHAR: 1,
+  QUANT_CLIQUES_PARA_GANHAR: 10,
   QUANT_BOMBAS: 7,
   posicoesBombas: { linha: [], coluna: [] },
   valoresBlocos: [],

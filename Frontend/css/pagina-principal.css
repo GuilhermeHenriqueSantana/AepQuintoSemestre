@@ -8,6 +8,12 @@
   min-height: calc(100vh - 70px);
 }
 
+#titulo {
+  font-family: fantasy, sans-serif;
+  letter-spacing: 1px;
+  font-size: 40px;
+}
+
 #icon-user {
   display: inline-block;
   border-width: 2px;

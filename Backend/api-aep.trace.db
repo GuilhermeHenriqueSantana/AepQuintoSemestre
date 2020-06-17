@@ -1,0 +1,9 @@
+2020-06-17 18:02:38 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "JUSTIFICATIVA VARCHAR(255)": "STRINGDECODE('Em nenhum \u00f3rg\u00e3o p\u00fablico \u00e9 permitido aplicar multas em outro \u00f3rg\u00e3o p\u00fablico devid... (269)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 18:32:58 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(2000)": "STRINGDECODE('A LGPD ou Lei Geral de Prote\u00e7\u00e3o de Dados \u00e9 uma lei de prote\u00e7\u00e3o de dados h\u00e1 muito esp... (2159)"; SQL statement:
+insert into pergunta (id, enunciado) values (null, ?) [22001-200]
+2020-06-17 18:43:25 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(2000)": "STRINGDECODE('Com base na nova legisla\u00e7\u00e3o da Lei Geral de Prote\u00e7\u00e3o de Dados marque a(s) alternativa(s) que m... (2035)"; SQL statement:
+insert into pergunta (id, enunciado) values (null, ?) [22001-200]

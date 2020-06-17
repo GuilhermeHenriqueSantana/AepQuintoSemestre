@@ -4,7 +4,6 @@ document.querySelector('#icone-return').onclick = function () {
   document.querySelector('#tela-principal').classList.remove('d-none')
 }
 
-
 let perguntas
 
 const jogo = {

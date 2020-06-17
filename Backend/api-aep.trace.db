@@ -926,3 +926,45 @@ Caused by: java.lang.IllegalStateException: The file is locked: nio:C:/Users/Thi
 	at org.h2.mvstore.FileStore.open(FileStore.java:172)
 	at org.h2.mvstore.MVStore.<init>(MVStore.java:381)
 	... 44 more
+2020-06-17 16:04:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:10 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:50 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:52 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:54 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:04:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de idosos: s\u00e3o aquelas pessoas com 60 anos completos ou mais, devido a sua falta de conhecimen... (308)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]
+2020-06-17 16:05:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "ENUNCIADO VARCHAR(255)": "STRINGDECODE('Dados pessoais de crian\u00e7as e adolescentes: crian\u00e7a s\u00e3o pessoas de at\u00e9 12 anos incompletos, ado... (405)"; SQL statement:
+insert into alternativa (id, enunciado, justificativa, verdadeira) values (null, ?, ?, ?) [22001-200]

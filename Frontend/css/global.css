@@ -5,7 +5,6 @@ body {
 }
 
 p {
-  text-indent: 40px;
   margin: 0;
 }
 
@@ -20,4 +19,5 @@ p {
   display: flex;
   justify-content: space-between;
   min-width: 1100px;
+  max-width: 1100px;
 }

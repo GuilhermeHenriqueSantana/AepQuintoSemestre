@@ -103,7 +103,7 @@ const jogo = {
               </label>
             </div>
             
-            <p class="text-center">${alternativa.enunciado}</p>
+            <p>${alternativa.enunciado}</p>
           </div>
         </div>
       `

@@ -40,7 +40,7 @@ const tabuleiroCampoMinado = {
   QUANT_LINHAS_COLUNAS: 7,
   cliques: undefined,
   QUANT_CLIQUES_PARA_GANHAR: 10,
-  QUANT_BOMBAS: 7,
+  QUANT_BOMBAS: 10,
   posicoesBombas: { linha: [], coluna: [] },
   valoresBlocos: [],
 

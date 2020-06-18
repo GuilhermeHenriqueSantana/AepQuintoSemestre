@@ -18,7 +18,7 @@ const tabuleiroMemoria = {
     this.elementosExpostosNaVez = []
     this.cards = []
     this.acertos = []
-    this.errosPermitidos = 20
+    this.errosPermitidos = 5
 
     this.construir()
   },
@@ -183,22 +183,6 @@ const tabuleiroMemoria = {
     return undefined
   },
 
-  embaralharCards(array) {
-    var indice_atual = array.length, valor_temporario, indice_aleatorio;
-
-    while (0 !== indice_atual) {
-
-      indice_aleatorio = Math.floor(Math.random() * indice_atual);
-      indice_atual -= 1;
-
-      valor_temporario = array[indice_atual];
-      array[indice_atual] = array[indice_aleatorio];
-      array[indice_aleatorio] = valor_temporario;
-    }
-
-    return array;
-  },
-
   definirPosicoesDosCards() {
     for (let i = 0; i < this.QUANT_CARD / 2; i++) {
 
@@ -215,7 +199,7 @@ const tabuleiroMemoria = {
       })
     }
 
-    this.cards = this.embaralharCards(this.cards)
+    this.cards = embaralharArray(this.cards)
 
     let index = 0
     for (let i = 0; i < this.QUANT_LINHA; i++) {

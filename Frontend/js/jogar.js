@@ -1,10 +1,16 @@
+let perguntas = undefined
+
 //Onclick botão retornar
 document.querySelector('#icone-return').onclick = function () {
   document.querySelector('#tela-perguntas').classList.add('d-none')
   document.querySelector('#tela-principal').classList.remove('d-none')
 }
 
-let perguntas
+function setPerguntas(data) {
+  perguntas = embaralharArray(data)
+  perguntas.length = 8
+  jogo.iniciar()
+}
 
 const jogo = {
   contadorDoTempoFoiIniciado: false,

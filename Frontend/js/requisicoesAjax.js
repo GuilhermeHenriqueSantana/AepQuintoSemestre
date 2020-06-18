@@ -20,8 +20,7 @@ function getPerguntas() {
     type: "GET",
     contentType: 'application/json',
   }).done((data) => {
-    perguntas = data
-    jogo.iniciar()
+    setPerguntas(data)
   })
 }
 

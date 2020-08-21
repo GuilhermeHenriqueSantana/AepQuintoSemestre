@@ -4,12 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.unicesumar.API.model.Alternativa;
 import com.unicesumar.API.model.Pergunta;
 import com.unicesumar.API.repository.AlternativaRepository;
 
 public class PerguntaForm {
+	
+	@NotNull @NotEmpty
 	private String enunciado;
+	
+	@NotNull
 	private Long[] longs;
 	
 	public String getEnunciado() {

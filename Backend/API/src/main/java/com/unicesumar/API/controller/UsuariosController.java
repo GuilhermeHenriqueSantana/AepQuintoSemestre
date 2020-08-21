@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +40,7 @@ public class UsuariosController {
 	@CrossOrigin
 	@PostMapping
 	@Transactional
-	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody UsuarioForm form){
+	public ResponseEntity<UsuarioDto> cadastrar(@RequestBody @Valid UsuarioForm form){
 		Usuario usuario = form.converter();
 		Optional<Usuario> usuarioOptional = usuarioRepository.buscarPeloNome(usuario.getNome());
 		if(usuarioOptional.isPresent()) {

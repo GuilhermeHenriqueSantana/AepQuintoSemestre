@@ -1,11 +1,19 @@
 package com.unicesumar.API.controller.form;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.unicesumar.API.model.Alternativa;
 
 public class AlternativaForm {
 	
+	@NotNull @NotEmpty
 	private String enunciado;
+	
+	@NotNull @NotEmpty
 	private boolean verdadeira;
+	
+	@NotNull
 	private String justificativa;
 	
 	public String getEnunciado() {

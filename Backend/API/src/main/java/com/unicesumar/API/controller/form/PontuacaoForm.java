@@ -1,11 +1,20 @@
 package com.unicesumar.API.controller.form;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
 import com.unicesumar.API.model.Pontuacao;
 import com.unicesumar.API.model.Usuario;
 
 public class PontuacaoForm {
+	
+	@NotNull @NotEmpty
 	private int quantidadeAcertos;
+	
+	@NotNull @NotEmpty
 	private int tempoGasto;
+	
+	@NotNull @NotEmpty
 	private Long idUsuario;
 	
 	public int getQuantidadeAcertos() {

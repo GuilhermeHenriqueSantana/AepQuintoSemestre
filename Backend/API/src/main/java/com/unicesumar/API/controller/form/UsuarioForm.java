@@ -8,7 +8,7 @@ import com.unicesumar.API.model.Usuario;
 
 public class UsuarioForm {
 	
-	@NotNull @NotEmpty @Size(min = 5, max = 15)
+	@NotNull(message = "{nome.not.null}") @NotEmpty(message = "{nome.not.blank}") @Size(message = "{nome.size}", min = 5, max = 15)
 	private String nome;
 	
 	public String getNome() {

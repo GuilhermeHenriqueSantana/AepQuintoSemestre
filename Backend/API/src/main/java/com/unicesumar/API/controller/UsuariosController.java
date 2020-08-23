@@ -8,6 +8,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,7 +57,8 @@ public class UsuariosController {
 	@CrossOrigin
 	@GetMapping("/{id}")
 	@Transactional
-	public ResponseEntity<UsuarioDto> detalhar(@PathVariable Long id) {
+	public ResponseEntity<UsuarioDto> detalhar(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+		System.out.println(userDetails);
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		if(usuario.isPresent()) {
 			return ResponseEntity.ok(new UsuarioDto(usuario.get()));			
@@ -65,6 +69,7 @@ public class UsuariosController {
 	@CrossOrigin
 	@DeleteMapping("/{id}")
 	@Transactional
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> remover(@PathVariable Long id){
 		Optional<Usuario> usuario = usuarioRepository.findById(id);
 		if(usuario.isPresent()) {

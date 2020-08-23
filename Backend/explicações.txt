@@ -1,0 +1,115 @@
+1°
+para validações pricissamos de uma nova dependencia
+<!-- Agora temos que importar o Bean Validation -->
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+   	<artifactId>spring-boot-starter-validation</artifactId>
+</dependency>
+
+
+2° 
+para personalizar as mensagem de validação
+na pasta resources onde fica application.properties criar
+src/main/resources/ValidationMessages.properties
+
+dentro do arquivo colocar (exemplo)
+
+nome.not.blank=Nome não deve estar em branco.
+nome.not.null=Nome não pode ser nulo.
+nome.size=Nome do usuario deve ser entre 5 e 15 caracteres.
+
+usando no form de dto
+@NotNull(message = "{nome.not.null}") 
+@NotEmpty(message = "{nome.not.blank}") 
+@Size(message = "{nome.size}", min = 5, max = 15)
+private String nome;
+
+
+
+
+
+3°
+aplicações seguras
+<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-security</artifactId>
+</dependency>
+
+
+4° 
+configurando spring security no com.API.config.security
+
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+			.anyRequest().authenticated()
+			.and()
+			.httpBasic()
+			.and()
+			.csrf().disable();
+		http.headers().frameOptions().disable(); // para o console do h2 funcionar
+	}
+	// aqui criando dois usuarios em memoria, mas não ficara assim
+	@Autowired
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+		auth.inMemoryAuthentication()
+			.withUser("user1").password(encoder.encode("123456")).roles("USER").and()
+			.withUser("user2").password(encoder.encode("123456")).roles("USER", "ADMIN");
+	}
+}
+
+5° no pacote com.API.service
+@Component
+public class CustomUserDetailService implements UserDetailsService{
+
+	private final AepUserRepository aepUserRepository;
+
+	@Autowired
+	public CustomUserDetailService(AepUserRepository aepUserRepository) {
+		this.aepUserRepository = aepUserRepository;
+	}
+
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		Optional<AepUser> optionalAepUser =  aepUserRepository.findByUserName(username);
+		if (!optionalAepUser.isPresent()) {
+			throw new UsernameNotFoundException("Usuario não encontrado");			
+		}
+		AepUser user = optionalAepUser.get();
+		List<GrantedAuthority> authoritiesAdmin = AuthorityUtils.createAuthorityList("ROLE_USER", "ROLE_ADMIN");
+		List<GrantedAuthority> authoritiesUser = AuthorityUtils.createAuthorityList("ROLE_USER");
+		return new User(user.getNome(), user.getSenha(), user.isAdmin() ? authoritiesAdmin : authoritiesUser);
+	}
+
+}
+
+6° substituir o 4° pelo 6°
+
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	@Autowired
+	private CustomUserDetailService customUserDetailService;
+	
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+			.anyRequest().authenticated()
+			.and()
+			.httpBasic()
+			.and()
+			.csrf().disable();
+		http.headers().frameOptions().disable();
+	}
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
+	}
+}

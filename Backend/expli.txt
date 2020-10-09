@@ -104,8 +104,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 			.httpBasic()
 			.and()
-			.cors()
-			.and()
 			.csrf().disable();
 		http.headers().frameOptions().disable();
 	}
@@ -115,23 +113,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		auth.userDetailsService(customUserDetailService).passwordEncoder(new BCryptPasswordEncoder());
 	}
 }
-
-
-
-
-7° configurar cors
-
-package com.unicesumar.API.config;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-
-@Configuration
-public class CorsConfiguration implements WebMvcConfigurer {
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/**").allowedMethods("*").allowedOrigins("*").allowedHeaders("*");
-    }
-}
-
